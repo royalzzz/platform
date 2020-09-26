@@ -12,8 +12,8 @@ import xin.qust.platform.config.login.LoginMethodConfig;
 import xin.qust.platform.config.login.filter.EmailLoginFilter;
 import xin.qust.platform.config.login.provider.EmailLoginProvider;
 
-@Configuration
-@EnableWebSecurity
+//@Configuration
+//@EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired

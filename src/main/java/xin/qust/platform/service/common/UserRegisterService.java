@@ -44,6 +44,7 @@ public class UserRegisterService {
             userBasicInfo.setProvince("山东省");
             userBasicInfo.setRealName("朱孟帅");
             userBasicInfoRepo.save(userBasicInfo);
+//            userBasicInfoRepo.de
 
             if (userBasicInfo.getEmail() != null && !userBasicInfo.getEmail().equals("")) {
                 UserEmailLogin userEmailLogin = new UserEmailLogin();

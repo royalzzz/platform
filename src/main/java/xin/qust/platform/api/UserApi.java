@@ -2,9 +2,11 @@ package xin.qust.platform.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import xin.qust.platform.domain.UserBasicInfo;
 import xin.qust.platform.repository.UserBasicInfoRepo;
 import xin.qust.platform.service.common.UserRegisterService;
 
@@ -20,16 +22,14 @@ public class UserApi {
     private UserBasicInfoRepo userBasicInfoRepo;
 
     @RequestMapping("register")
-    public void register () {
+    public Page<UserBasicInfo> register (int page, int size) {
 
-        System.out.println(userBasicInfoRepo);
-        Class c = userBasicInfoRepo.getClass();
-        Method[] ms = c.getDeclaredMethods();
-        for(Method m : ms){
-            System.out.println(m.getName());
-        }
+        return userBasicInfoRepo.findAll(PageRequest.of(page,size));
+//        Class c = userBasicInfoRepo.getClass();
+//        Method[] ms = c.getDeclaredMethods();
+//        for(Method m : ms){
+//            System.out.println(m.getName());
+//        }
 
-        userBasicInfoRepo.findAllByNickNameAndCity("","", PageRequest.of(1,1));
-//        userRegisterService.addNewUser();
     }
 }

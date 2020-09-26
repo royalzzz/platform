@@ -8,6 +8,9 @@ import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
 
 @NoRepositoryBean
 @Transactional(
@@ -17,6 +20,7 @@ public class WMRepositoryImplementation<T, ID> extends SimpleJpaRepository<T, ID
 
     private final JpaEntityInformation<T, ?> entityInformation;
     private final EntityManager em;
+    private Map<String,Method> methodMap = new HashMap<String, Method>();
 
 
     public WMRepositoryImplementation(JpaEntityInformation<T, ?> entityInformation, EntityManager entityManager) {
@@ -30,4 +34,10 @@ public class WMRepositoryImplementation<T, ID> extends SimpleJpaRepository<T, ID
     }
 
 
+
+
+    @Override
+    public WebModel findByWebModel(String method, WebModel wm) {
+        return null;
+    }
 }

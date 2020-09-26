@@ -7,5 +7,6 @@ import org.springframework.data.repository.NoRepositoryBean;
 @NoRepositoryBean
 public interface WMRepository<T, ID> extends JpaRepository<T, ID> {
 
+    public WebModel findByWebModel(String method, WebModel wm);
 
 }

@@ -10,6 +10,7 @@ import org.springframework.security.web.authentication.AuthenticationFilter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import xin.qust.platform.config.login.LoginMethodConfig;
 import xin.qust.platform.config.login.filter.EmailLoginFilter;
+import xin.qust.platform.config.login.filter.TokenAuthenticationFilter;
 import xin.qust.platform.config.login.provider.EmailLoginProvider;
 
 @Configuration
@@ -23,11 +24,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .logout().logoutUrl("/logout")
-                .and().authorizeRequests().antMatchers("/loginByEmail", "/loginByUserName").permitAll()
+                .addLogoutHandler(loginMethodConfig.tokenLogoutHandler())
+                .and().authorizeRequests().antMatchers("/loginByEmail", "/loginByUserName", "/user/register").permitAll()
                 .and().authorizeRequests().anyRequest().authenticated()
                 .and()
-                .addFilterBefore(loginMethodConfig.emailLoginFilter(), UsernamePasswordAuthenticationFilter.class)
-                .addFilterBefore(loginMethodConfig.userNameLoginFilter(), EmailLoginFilter.class)
+                .addFilterBefore(loginMethodConfig.tokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
+                .addFilterAfter(loginMethodConfig.emailLoginFilter(), TokenAuthenticationFilter.class)
+                .addFilterAfter(loginMethodConfig.userNameLoginFilter(), TokenAuthenticationFilter.class)
                 .csrf().disable();
     }
 }

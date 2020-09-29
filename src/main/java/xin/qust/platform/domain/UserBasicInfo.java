@@ -5,6 +5,7 @@ import org.hibernate.annotations.GeneratorType;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "user_basic_info")
@@ -37,6 +38,10 @@ public class UserBasicInfo implements Serializable {
     private Date createTime;
 
     private Date modifiedTime;
+
+    @ManyToMany(targetEntity = UserRole.class, fetch = FetchType.EAGER)
+    @JoinTable(name = "user_has_role", joinColumns = {@JoinColumn(name = "_id")}, inverseJoinColumns = {@JoinColumn(name = "role_id")})
+    private Set<UserRole> userRoles;
 
     public Long getId() {
         return id;
@@ -140,5 +145,13 @@ public class UserBasicInfo implements Serializable {
 
     public void setModifiedTime(Date modifiedTime) {
         this.modifiedTime = modifiedTime;
+    }
+
+    public Set<UserRole> getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(Set<UserRole> userRoles) {
+        this.userRoles = userRoles;
     }
 }

@@ -4,15 +4,13 @@ import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import xin.qust.platform.domain.UserBasicInfo;
-import xin.qust.platform.domain.UserEmailLogin;
-import xin.qust.platform.domain.UserNameLogin;
-import xin.qust.platform.repository.UserBasicInfoRepo;
-import xin.qust.platform.repository.UserEmailLoginRepo;
-import xin.qust.platform.repository.UserNameLoginRepo;
+import xin.qust.platform.domain.*;
+import xin.qust.platform.repository.*;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Service
 public class UserRegisterService {
@@ -25,6 +23,12 @@ public class UserRegisterService {
 
     @Autowired
     private UserNameLoginRepo userNameLoginRepo;
+
+    @Autowired
+    private UserRoleRepo userRoleRepo;
+
+    @Autowired
+    private UserAuthorityRepo userAuthorityRepo;
 
     public void addNewUser() {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -43,6 +47,48 @@ public class UserRegisterService {
             userBasicInfo.setNickName("royal");
             userBasicInfo.setProvince("山东省");
             userBasicInfo.setRealName("朱孟帅");
+
+            UserAuthority all = new UserAuthority();
+            all.setAuthority("ALL");
+            all.setAuthorityName("所有权限");
+            userAuthorityRepo.save(all);
+
+            UserAuthority reader = new UserAuthority();
+            reader.setAuthority("READ_ONLY");
+            reader.setAuthorityName("只读权限");
+            userAuthorityRepo.save(reader);
+
+            UserAuthority writer = new UserAuthority();
+            writer.setAuthority("WRITE");
+            writer.setAuthorityName("写入权限");
+            userAuthorityRepo.save(writer);
+
+            Set<UserAuthority> adminAuthorities = new HashSet<>();
+            adminAuthorities.add(all);
+            adminAuthorities.add(reader);
+            adminAuthorities.add(writer);
+
+            Set<UserAuthority> userAuthorities = new HashSet<>();
+            userAuthorities.add(reader);
+
+            UserRole admin = new UserRole();
+            admin.setRole("ADMIN");
+            admin.setRoleName("管理员");
+            admin.setUserAuthoritySet(adminAuthorities);
+            userRoleRepo.save(admin);
+
+            UserRole userRole = new UserRole();
+            userRole.setRole("USER");
+            userRole.setRoleName("普通用户");
+            userRole.setUserAuthoritySet(userAuthorities);
+            userRoleRepo.save(userRole);
+
+            Set<UserRole> adminRoles = new HashSet<>();
+            adminRoles.add(admin);
+            adminRoles.add(userRole);
+
+            userBasicInfo.setUserRoles(adminRoles);
+
             userBasicInfoRepo.save(userBasicInfo);
 
             if (userBasicInfo.getEmail() != null && !userBasicInfo.getEmail().equals("")) {

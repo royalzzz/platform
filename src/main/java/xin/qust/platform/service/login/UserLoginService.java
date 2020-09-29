@@ -1,5 +1,6 @@
 package xin.qust.platform.service.login;
 
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -7,6 +8,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import xin.qust.platform.domain.UserNameLogin;
+import xin.qust.platform.model.Message;
+import xin.qust.platform.model.ResponseCode;
 import xin.qust.platform.repository.UserBasicInfoRepo;
 import xin.qust.platform.repository.UserEmailLoginRepo;
 import xin.qust.platform.repository.UserNameLoginRepo;
@@ -33,7 +36,7 @@ public class UserLoginService implements UserDetailsService {
             return userNameLogin.get();
         }
         else {
-            throw new BadCredentialsException("用户不存在");
+            throw new BadCredentialsException(new Message(ResponseCode.USER_NOT_EXIST).toJsonString());
         }
     }
 

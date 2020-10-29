@@ -1,0 +1,30 @@
+
+syntax = "proto3";
+
+package proto;
+option java_package = "xin.qust.platform.proto";
+option java_outer_classname = "TaskManageProto";
+option java_multiple_files = false;
+
+//服务端接口类
+service TaskManage {
+  //服务端接口方法
+  rpc listActiveTask (ListActiveRequest) returns (ListActiveReply) {}
+  rpc killTask(KillRequest) returns (KillReply) {}
+}
+
+message ListActiveRequest {
+
+}
+
+message ListActiveReply {
+   repeated string tasks = 1;
+}
+
+message KillRequest {
+   string taskId = 1;
+}
+
+message KillReply {
+   string message = 1;
+}

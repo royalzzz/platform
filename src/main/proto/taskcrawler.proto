@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package proto;
+option java_package = "xin.qust.platform.proto";
+option java_outer_classname = "TaskCrawlerProto";
+option java_multiple_files = false;
+
+//服务端接口类
+service taskcrawler {
+  //服务端接口方法
+  rpc crawler1(Crawler1Request) returns (Crawler1Reply) {}
+}
+
+//请求参数
+message Crawler1Request {
+  //taskId 字段是我们自己定义的 一定要有
+  string taskId = 1;
+  string keywords = 2;
+}
+
+//响应参数
+message Crawler1Reply {
+  string message = 1;
+}

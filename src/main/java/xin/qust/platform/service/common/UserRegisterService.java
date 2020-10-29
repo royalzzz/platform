@@ -44,14 +44,15 @@ public class UserRegisterService {
             userBasicInfo.setGender(1);
             userBasicInfo.setIntroduction("该人很懒...");
             userBasicInfo.setModifiedTime(new Date());
-            userBasicInfo.setNickName("royal");
+            userBasicInfo.setNickName("sjf");
             userBasicInfo.setProvince("山东省");
-            userBasicInfo.setRealName("朱孟帅");
+            userBasicInfo.setRealName("隋建飞");
 
             UserAuthority all = new UserAuthority();
             all.setAuthority("ALL");
             all.setAuthorityName("所有权限");
             userAuthorityRepo.save(all);
+            
 
             UserAuthority reader = new UserAuthority();
             reader.setAuthority("READ_ONLY");
@@ -88,7 +89,7 @@ public class UserRegisterService {
             adminRoles.add(userRole);
 
             userBasicInfo.setUserRoles(adminRoles);
-
+//            System.out.println(userBasicInfo);
             userBasicInfoRepo.save(userBasicInfo);
 
             if (userBasicInfo.getEmail() != null && !userBasicInfo.getEmail().equals("")) {

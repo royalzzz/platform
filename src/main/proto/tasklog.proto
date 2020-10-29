@@ -1,0 +1,23 @@
+
+syntax = "proto3";
+
+package proto;
+option java_package = "xin.qust.platform.proto";
+option java_outer_classname = "TaskLogProto";
+option java_multiple_files = false;
+
+//服务端接口类
+service TaskLog {
+  //服务端接口方法
+  rpc collectLog (LogRequest) returns (LogReply) {}
+}
+
+//响应参数
+message LogRequest {
+  string taskId = 1;
+  string message = 2;
+}
+
+message LogReply {
+  string message = 1;
+}

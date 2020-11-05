@@ -1,0 +1,25 @@
+//python -m grpc_tools.protoc --python_out=. --grpc_python_out=. -I. server1.proto
+
+syntax = "proto3";
+
+package proto;
+option java_package = "xin.qust.platform.proto";
+option java_outer_classname = "Server2Proto";
+option java_multiple_files = false;
+
+//服务端接口类
+service Server2 {
+  //服务端接口方法
+  rpc fun2 (Fun2Request) returns (Fun2Reply) {}
+}
+
+//请求参数
+message Fun2Request {
+  string taskId = 1;
+  string param = 2;
+}
+
+//响应参数
+message Fun2Reply {
+  string message = 1;
+}

@@ -1,0 +1,29 @@
+//python -m grpc_tools.protoc --python_out=. --grpc_python_out=. -I. server1.proto
+//python -m grpc_tools.protoc -I ./proto --python_out=./proto_generate --grpc_python_out=./proto_generate ./proto/server1.proto
+
+
+
+syntax = "proto3";
+
+package proto;
+option java_package = "xin.qust.platform.proto";
+option java_outer_classname = "Server1Proto";
+option java_multiple_files = false;
+
+//服务端接口类
+service Server1 {
+  //服务端接口方法
+  rpc fun1 (Fun1Request) returns (Fun1Reply) {}
+}
+
+//请求参数
+message Fun1Request {
+  //taskId 字段是我们自己定义的 一定要有
+  string taskId = 1;
+  string param = 2;
+}
+
+//响应参数
+message Fun1Reply {
+  string message = 1;
+}

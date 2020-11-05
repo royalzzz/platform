@@ -11,7 +11,7 @@ spring:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 server:
-  port: 8688
+  port: 8888
 token:
   expire: 3600
   key: 123

@@ -24,11 +24,15 @@ public class UserApi {
 
     @Autowired
     private UserRegisterService userRegisterService;
-
     @Autowired
     private UserBasicInfoRepo userBasicInfoRepo;
     @Autowired
     private UserNameLoginRepo userNameLoginRepo;
+
+    @RequestMapping("logout")
+    public void logout () {
+        userRegisterService.addNewUser();
+    }
 
     @RequestMapping("register")
     public void register () {
@@ -42,8 +46,6 @@ public class UserApi {
         if (userNameLogin.isPresent()) {
             Optional<UserBasicInfo> userBasicInfo = userBasicInfoRepo.findById(userNameLogin.get().getUserId());
             if (userBasicInfo.isPresent()) {
-//                Message message = new Message(ResponseCode.SUCCESS);
-//                message.setData(userBasicInfo.get());
                 Message message = new Message();
                 message.setCode(1);
                 message.setData(new UserInfoVo(userBasicInfo.get()));

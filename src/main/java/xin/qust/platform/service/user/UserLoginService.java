@@ -7,10 +7,10 @@ import xin.qust.platform.repository.UserRepo;
 
 import java.util.Optional;
 
-
+@Service
 public class UserLoginService {
 
-
+    @Autowired
     private UserRepo userRepo;
 
 //    username使用nickname

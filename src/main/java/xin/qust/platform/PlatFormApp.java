@@ -10,6 +10,6 @@ public class PlatFormApp {
 
     public static void main(String[] args) {
         TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
-        SpringApplication.run(PlatFormApp.class);
+        SpringApplication.run(xin.qust.platform.PlatFormApp.class);
     }
 }

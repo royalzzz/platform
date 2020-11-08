@@ -1,7 +1,7 @@
 package xin.qust.platform.model;
 
 import com.alibaba.fastjson.JSONObject;
-import org.springframework.data.domain.Page;
+import xin.qust.platform.model.ResponseCode;
 
 public class Message {
 
@@ -118,7 +118,7 @@ public class Message {
      * @param responseCode 前端RESTful返回信息的响应码
      * @return 返回当前对象
      */
-    public Message setResponseCode(ResponseCode responseCode) {
+    public xin.qust.platform.model.Message setResponseCode(ResponseCode responseCode) {
         this.code = responseCode.getCode();
         this.message = responseCode.getMessage();
         return this;

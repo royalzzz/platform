@@ -1,4 +1,4 @@
-package xin.qust.platform.proto;
+package xin.qust.platform.grpc.proto;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
@@ -30,30 +30,30 @@ public final class TaskManageGrpc {
   public static final String SERVICE_NAME = "proto.TaskManage";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<xin.qust.platform.proto.TaskManageProto.ListActiveRequest,
-      xin.qust.platform.proto.TaskManageProto.ListActiveReply> getListActiveTaskMethod;
+  private static volatile io.grpc.MethodDescriptor<xin.qust.platform.grpc.proto.TaskManageProto.ListActiveRequest,
+      xin.qust.platform.grpc.proto.TaskManageProto.ListActiveReply> getListActiveTaskMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "listActiveTask",
-      requestType = xin.qust.platform.proto.TaskManageProto.ListActiveRequest.class,
-      responseType = xin.qust.platform.proto.TaskManageProto.ListActiveReply.class,
+      requestType = xin.qust.platform.grpc.proto.TaskManageProto.ListActiveRequest.class,
+      responseType = xin.qust.platform.grpc.proto.TaskManageProto.ListActiveReply.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<xin.qust.platform.proto.TaskManageProto.ListActiveRequest,
-      xin.qust.platform.proto.TaskManageProto.ListActiveReply> getListActiveTaskMethod() {
-    io.grpc.MethodDescriptor<xin.qust.platform.proto.TaskManageProto.ListActiveRequest, xin.qust.platform.proto.TaskManageProto.ListActiveReply> getListActiveTaskMethod;
+  public static io.grpc.MethodDescriptor<xin.qust.platform.grpc.proto.TaskManageProto.ListActiveRequest,
+      xin.qust.platform.grpc.proto.TaskManageProto.ListActiveReply> getListActiveTaskMethod() {
+    io.grpc.MethodDescriptor<xin.qust.platform.grpc.proto.TaskManageProto.ListActiveRequest, xin.qust.platform.grpc.proto.TaskManageProto.ListActiveReply> getListActiveTaskMethod;
     if ((getListActiveTaskMethod = TaskManageGrpc.getListActiveTaskMethod) == null) {
       synchronized (TaskManageGrpc.class) {
         if ((getListActiveTaskMethod = TaskManageGrpc.getListActiveTaskMethod) == null) {
           TaskManageGrpc.getListActiveTaskMethod = getListActiveTaskMethod = 
-              io.grpc.MethodDescriptor.<xin.qust.platform.proto.TaskManageProto.ListActiveRequest, xin.qust.platform.proto.TaskManageProto.ListActiveReply>newBuilder()
+              io.grpc.MethodDescriptor.<xin.qust.platform.grpc.proto.TaskManageProto.ListActiveRequest, xin.qust.platform.grpc.proto.TaskManageProto.ListActiveReply>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "proto.TaskManage", "listActiveTask"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  xin.qust.platform.proto.TaskManageProto.ListActiveRequest.getDefaultInstance()))
+                  xin.qust.platform.grpc.proto.TaskManageProto.ListActiveRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  xin.qust.platform.proto.TaskManageProto.ListActiveReply.getDefaultInstance()))
+                  xin.qust.platform.grpc.proto.TaskManageProto.ListActiveReply.getDefaultInstance()))
                   .setSchemaDescriptor(new TaskManageMethodDescriptorSupplier("listActiveTask"))
                   .build();
           }
@@ -62,30 +62,30 @@ public final class TaskManageGrpc {
      return getListActiveTaskMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<xin.qust.platform.proto.TaskManageProto.KillRequest,
-      xin.qust.platform.proto.TaskManageProto.KillReply> getKillTaskMethod;
+  private static volatile io.grpc.MethodDescriptor<xin.qust.platform.grpc.proto.TaskManageProto.KillRequest,
+      xin.qust.platform.grpc.proto.TaskManageProto.KillReply> getKillTaskMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "killTask",
-      requestType = xin.qust.platform.proto.TaskManageProto.KillRequest.class,
-      responseType = xin.qust.platform.proto.TaskManageProto.KillReply.class,
+      requestType = xin.qust.platform.grpc.proto.TaskManageProto.KillRequest.class,
+      responseType = xin.qust.platform.grpc.proto.TaskManageProto.KillReply.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<xin.qust.platform.proto.TaskManageProto.KillRequest,
-      xin.qust.platform.proto.TaskManageProto.KillReply> getKillTaskMethod() {
-    io.grpc.MethodDescriptor<xin.qust.platform.proto.TaskManageProto.KillRequest, xin.qust.platform.proto.TaskManageProto.KillReply> getKillTaskMethod;
+  public static io.grpc.MethodDescriptor<xin.qust.platform.grpc.proto.TaskManageProto.KillRequest,
+      xin.qust.platform.grpc.proto.TaskManageProto.KillReply> getKillTaskMethod() {
+    io.grpc.MethodDescriptor<xin.qust.platform.grpc.proto.TaskManageProto.KillRequest, xin.qust.platform.grpc.proto.TaskManageProto.KillReply> getKillTaskMethod;
     if ((getKillTaskMethod = TaskManageGrpc.getKillTaskMethod) == null) {
       synchronized (TaskManageGrpc.class) {
         if ((getKillTaskMethod = TaskManageGrpc.getKillTaskMethod) == null) {
           TaskManageGrpc.getKillTaskMethod = getKillTaskMethod = 
-              io.grpc.MethodDescriptor.<xin.qust.platform.proto.TaskManageProto.KillRequest, xin.qust.platform.proto.TaskManageProto.KillReply>newBuilder()
+              io.grpc.MethodDescriptor.<xin.qust.platform.grpc.proto.TaskManageProto.KillRequest, xin.qust.platform.grpc.proto.TaskManageProto.KillReply>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "proto.TaskManage", "killTask"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  xin.qust.platform.proto.TaskManageProto.KillRequest.getDefaultInstance()))
+                  xin.qust.platform.grpc.proto.TaskManageProto.KillRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  xin.qust.platform.proto.TaskManageProto.KillReply.getDefaultInstance()))
+                  xin.qust.platform.grpc.proto.TaskManageProto.KillReply.getDefaultInstance()))
                   .setSchemaDescriptor(new TaskManageMethodDescriptorSupplier("killTask"))
                   .build();
           }
@@ -129,15 +129,15 @@ public final class TaskManageGrpc {
      *服务端接口方法
      * </pre>
      */
-    public void listActiveTask(xin.qust.platform.proto.TaskManageProto.ListActiveRequest request,
-        io.grpc.stub.StreamObserver<xin.qust.platform.proto.TaskManageProto.ListActiveReply> responseObserver) {
+    public void listActiveTask(xin.qust.platform.grpc.proto.TaskManageProto.ListActiveRequest request,
+        io.grpc.stub.StreamObserver<xin.qust.platform.grpc.proto.TaskManageProto.ListActiveReply> responseObserver) {
       asyncUnimplementedUnaryCall(getListActiveTaskMethod(), responseObserver);
     }
 
     /**
      */
-    public void killTask(xin.qust.platform.proto.TaskManageProto.KillRequest request,
-        io.grpc.stub.StreamObserver<xin.qust.platform.proto.TaskManageProto.KillReply> responseObserver) {
+    public void killTask(xin.qust.platform.grpc.proto.TaskManageProto.KillRequest request,
+        io.grpc.stub.StreamObserver<xin.qust.platform.grpc.proto.TaskManageProto.KillReply> responseObserver) {
       asyncUnimplementedUnaryCall(getKillTaskMethod(), responseObserver);
     }
 
@@ -147,15 +147,15 @@ public final class TaskManageGrpc {
             getListActiveTaskMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                xin.qust.platform.proto.TaskManageProto.ListActiveRequest,
-                xin.qust.platform.proto.TaskManageProto.ListActiveReply>(
+                xin.qust.platform.grpc.proto.TaskManageProto.ListActiveRequest,
+                xin.qust.platform.grpc.proto.TaskManageProto.ListActiveReply>(
                   this, METHODID_LIST_ACTIVE_TASK)))
           .addMethod(
             getKillTaskMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                xin.qust.platform.proto.TaskManageProto.KillRequest,
-                xin.qust.platform.proto.TaskManageProto.KillReply>(
+                xin.qust.platform.grpc.proto.TaskManageProto.KillRequest,
+                xin.qust.platform.grpc.proto.TaskManageProto.KillReply>(
                   this, METHODID_KILL_TASK)))
           .build();
     }
@@ -187,16 +187,16 @@ public final class TaskManageGrpc {
      *服务端接口方法
      * </pre>
      */
-    public void listActiveTask(xin.qust.platform.proto.TaskManageProto.ListActiveRequest request,
-        io.grpc.stub.StreamObserver<xin.qust.platform.proto.TaskManageProto.ListActiveReply> responseObserver) {
+    public void listActiveTask(xin.qust.platform.grpc.proto.TaskManageProto.ListActiveRequest request,
+        io.grpc.stub.StreamObserver<xin.qust.platform.grpc.proto.TaskManageProto.ListActiveReply> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getListActiveTaskMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void killTask(xin.qust.platform.proto.TaskManageProto.KillRequest request,
-        io.grpc.stub.StreamObserver<xin.qust.platform.proto.TaskManageProto.KillReply> responseObserver) {
+    public void killTask(xin.qust.platform.grpc.proto.TaskManageProto.KillRequest request,
+        io.grpc.stub.StreamObserver<xin.qust.platform.grpc.proto.TaskManageProto.KillReply> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getKillTaskMethod(), getCallOptions()), request, responseObserver);
     }
@@ -228,14 +228,14 @@ public final class TaskManageGrpc {
      *服务端接口方法
      * </pre>
      */
-    public xin.qust.platform.proto.TaskManageProto.ListActiveReply listActiveTask(xin.qust.platform.proto.TaskManageProto.ListActiveRequest request) {
+    public xin.qust.platform.grpc.proto.TaskManageProto.ListActiveReply listActiveTask(xin.qust.platform.grpc.proto.TaskManageProto.ListActiveRequest request) {
       return blockingUnaryCall(
           getChannel(), getListActiveTaskMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public xin.qust.platform.proto.TaskManageProto.KillReply killTask(xin.qust.platform.proto.TaskManageProto.KillRequest request) {
+    public xin.qust.platform.grpc.proto.TaskManageProto.KillReply killTask(xin.qust.platform.grpc.proto.TaskManageProto.KillRequest request) {
       return blockingUnaryCall(
           getChannel(), getKillTaskMethod(), getCallOptions(), request);
     }
@@ -267,16 +267,16 @@ public final class TaskManageGrpc {
      *服务端接口方法
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<xin.qust.platform.proto.TaskManageProto.ListActiveReply> listActiveTask(
-        xin.qust.platform.proto.TaskManageProto.ListActiveRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<xin.qust.platform.grpc.proto.TaskManageProto.ListActiveReply> listActiveTask(
+        xin.qust.platform.grpc.proto.TaskManageProto.ListActiveRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getListActiveTaskMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<xin.qust.platform.proto.TaskManageProto.KillReply> killTask(
-        xin.qust.platform.proto.TaskManageProto.KillRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<xin.qust.platform.grpc.proto.TaskManageProto.KillReply> killTask(
+        xin.qust.platform.grpc.proto.TaskManageProto.KillRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getKillTaskMethod(), getCallOptions()), request);
     }
@@ -303,12 +303,12 @@ public final class TaskManageGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_LIST_ACTIVE_TASK:
-          serviceImpl.listActiveTask((xin.qust.platform.proto.TaskManageProto.ListActiveRequest) request,
-              (io.grpc.stub.StreamObserver<xin.qust.platform.proto.TaskManageProto.ListActiveReply>) responseObserver);
+          serviceImpl.listActiveTask((xin.qust.platform.grpc.proto.TaskManageProto.ListActiveRequest) request,
+              (io.grpc.stub.StreamObserver<xin.qust.platform.grpc.proto.TaskManageProto.ListActiveReply>) responseObserver);
           break;
         case METHODID_KILL_TASK:
-          serviceImpl.killTask((xin.qust.platform.proto.TaskManageProto.KillRequest) request,
-              (io.grpc.stub.StreamObserver<xin.qust.platform.proto.TaskManageProto.KillReply>) responseObserver);
+          serviceImpl.killTask((xin.qust.platform.grpc.proto.TaskManageProto.KillRequest) request,
+              (io.grpc.stub.StreamObserver<xin.qust.platform.grpc.proto.TaskManageProto.KillReply>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -332,7 +332,7 @@ public final class TaskManageGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return xin.qust.platform.proto.TaskManageProto.getDescriptor();
+      return xin.qust.platform.grpc.proto.TaskManageProto.getDescriptor();
     }
 
     @java.lang.Override

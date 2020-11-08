@@ -1,4 +1,4 @@
-package xin.qust.platform.utils;
+package xin.qust.platform.platform.utils;
 
 import java.lang.reflect.Field;
 import java.util.LinkedHashMap;

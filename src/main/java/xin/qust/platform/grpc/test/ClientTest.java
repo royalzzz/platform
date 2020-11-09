@@ -25,7 +25,10 @@ public class ClientTest {
 			}
 		});
 
-		ManagedChannel channel = ChannelFactory.createGrpcChannel();
+		ChannelFactory channelFactory = new ChannelFactory();
+		channelFactory.setHost("localhost");
+		channelFactory.setPort(5001);
+		ManagedChannel channel = channelFactory.createGrpcChannel();
 		Server1Grpc.Server1BlockingStub stub = Server1Grpc.newBlockingStub(channel);
 		Server1Proto.Fun1Request request = Server1Proto.Fun1Request.newBuilder().setTaskId(taskId).setParam("p1").build();
 		Server1Proto.Fun1Reply reply = stub.fun1(request);
@@ -37,7 +40,10 @@ public class ClientTest {
 
 	public void test2() throws Exception{
 
-		ManagedChannel channel = ChannelFactory.createGrpcChannel();
+		ChannelFactory channelFactory = new ChannelFactory();
+		channelFactory.setHost("localhost");
+		channelFactory.setPort(5001);
+		ManagedChannel channel = channelFactory.createGrpcChannel();
 		Server2Grpc.Server2BlockingStub stub = Server2Grpc.newBlockingStub(channel);
 
 		String taskId = UUID.randomUUID().toString();
@@ -48,7 +54,10 @@ public class ClientTest {
 		channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
 	}
 	public void taskCrawler() throws Exception{
-        ManagedChannel channel = ChannelFactory.createGrpcChannel();
+		ChannelFactory channelFactory = new ChannelFactory();
+		channelFactory.setHost("localhost");
+		channelFactory.setPort(5001);
+		ManagedChannel channel = channelFactory.createGrpcChannel();
         taskcrawlerGrpc.taskcrawlerBlockingStub stub = taskcrawlerGrpc.newBlockingStub(channel);
 
         String taskId = UUID.randomUUID().toString();
@@ -61,7 +70,10 @@ public class ClientTest {
 
 	public void testTaskManage() throws Exception{
 
-		ManagedChannel channel = ChannelFactory.createGrpcChannel();
+		ChannelFactory channelFactory = new ChannelFactory();
+		channelFactory.setHost("localhost");
+		channelFactory.setPort(5001);
+		ManagedChannel channel = channelFactory.createGrpcChannel();
 		TaskManageGrpc.TaskManageBlockingStub stub = TaskManageGrpc.newBlockingStub(channel);
 
 

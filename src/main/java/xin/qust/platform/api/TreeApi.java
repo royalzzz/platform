@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import xin.qust.platform.config.login.token.JwtTokenManager;
 import xin.qust.platform.model.Message;
 import xin.qust.platform.model.ResponseCode;
+import xin.qust.platform.service.common.EventGraphService;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,11 +24,16 @@ public class TreeApi {
     @Autowired
     private JwtTokenManager jwtTokenManager;
 
+    @Autowired
+    private EventGraphService eventGraphService;
+
     @RequestMapping("getBiaozhuTree")
     public Message getBiaozhuTree () {
         Object object =  SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         Message message = new Message(ResponseCode.SUCCESS);
+
+        eventGraphService.getNodes();
 
         ArrayList<Map> nodes = new ArrayList<>();
 

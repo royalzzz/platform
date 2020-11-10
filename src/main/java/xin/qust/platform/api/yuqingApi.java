@@ -19,7 +19,7 @@ public class yuqingApi {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @RequestMapping("setCrawlerParams")
-    public Message setCrawlerParams(String s_key, String s_time, String s_date) {
+    public Message setCrawlerParams(String s_key,String s_time, String s_date) {
 //        String data = httpServletRequest.getParameter("data");
 //        String password = httpServletRequest.getParameter("password");
         Message message = new Message();

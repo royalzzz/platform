@@ -1,10 +1,8 @@
 package xin.qust.platform.config.login.filter;
 
-import io.jsonwebtoken.ExpiredJwtException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
@@ -46,16 +44,11 @@ public class TokenAuthenticationFilter extends BasicAuthenticationFilter {
     private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
         String token = request.getHeader("token");
         if (token != null && !"".equals(token.trim())) {
-            try{
-                String userName = tokenManager.getUserFromToken(token);
-                if (!StringUtils.isEmpty(userName)) {
-                    return new UsernamePasswordAuthenticationToken(userName, token, new ArrayList<>());
-                }
-                return null;
-            }catch (ExpiredJwtException e) {
-                logger.warn("用户过期");
-                throw new BadCredentialsException("expired");
+            String userName = tokenManager.getUserFromToken(token);
+            if (!StringUtils.isEmpty(userName)) {
+                return new UsernamePasswordAuthenticationToken(userName, token, new ArrayList<>());
             }
+            return null;
         }
         return null;
     }

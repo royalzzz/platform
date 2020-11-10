@@ -34,6 +34,7 @@ public class EventGraphService {
         return map;
     }
 
+//    获取存在数据库中的标准树
     public Map<String, List> getBiaozhunTree() throws IllegalAccessException {
         List<EventNode> eventNodes = eventNodeRepo.findAll();
         List<EventEdge> eventEdges = eventEdgeRepo.findAll();
@@ -46,7 +47,7 @@ public class EventGraphService {
         ArrayList<Map> edges = new ArrayList<>();
         for(int i=0; i<eventEdges.size(); i ++){
             Map<String, Object> edgeMap = getObjectToMap(eventEdges.get(i));
-            edgeMap.remove("id");
+//            edgeMap.remove("id");
             edges.add(edgeMap);
         }
         Map<String, List> data = new HashMap<>();

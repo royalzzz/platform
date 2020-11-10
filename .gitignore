@@ -3,3 +3,15 @@
 /.idea
 
 *.iml
+
+/.vscode
+
+/.settings
+
+.classpath
+
+.project
+
+/bin
+
+

@@ -7,6 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import xin.qust.platform.config.login.token.JwtTokenManager;
+import xin.qust.platform.domain.EventNode;
 import xin.qust.platform.model.Message;
 import xin.qust.platform.model.ResponseCode;
 import xin.qust.platform.service.common.EventGraphService;
@@ -28,36 +29,34 @@ public class TreeApi {
     private EventGraphService eventGraphService;
 
     @RequestMapping("getBiaozhuTree")
-    public Message getBiaozhuTree () {
+    public Message getBiaozhuTree () throws IllegalAccessException {
         Object object =  SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         Message message = new Message(ResponseCode.SUCCESS);
-
-        eventGraphService.getNodes();
-
-        ArrayList<Map> nodes = new ArrayList<>();
-
-        Map<String, Object> node = new HashMap<>();
-        node.put("id",0);
-        node.put("label","A");
-        nodes.add(node);
-
-        Map<String, Object> node2 = new HashMap<>();
-        node2.put("id",1);
-        node2.put("label","B");
-        nodes.add(node2);
-
-
-        Map<String, Object> edge = new HashMap<>();
-        edge.put("from", 0);
-        edge.put("to", 1);
-        ArrayList<Map> edges = new ArrayList<>();
-        edges.add(edge);
-
-
-        Map<String, List> data = new HashMap<>();
-        data.put("db_nodes", nodes);
-        data.put("db_edges", edges);
+        Map<String, List> data  = eventGraphService.getBiaozhunTree();
+//        ArrayList<Map> nodes = new ArrayList<>();
+//
+//        Map<String, Object> node = new HashMap<>();
+//        node.put("id",0);
+//        node.put("label","A");
+//        nodes.add(node);
+//
+//        Map<String, Object> node2 = new HashMap<>();
+//        node2.put("id",1);
+//        node2.put("label","B");
+//        nodes.add(node2);
+//
+//
+//        Map<String, Object> edge = new HashMap<>();
+//        edge.put("from", 0);
+//        edge.put("to", 1);
+//        ArrayList<Map> edges = new ArrayList<>();
+//        edges.add(edge);
+//
+//
+//        Map<String, List> data = new HashMap<>();
+//        data.put("db_nodes", nodes);
+//        data.put("db_edges", edges);
         message.setData(data);
         String new_token = jwtTokenManager.createToken(object.toString());
         message.setToken(new_token);

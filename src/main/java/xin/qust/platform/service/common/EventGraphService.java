@@ -54,6 +54,14 @@ public class EventGraphService {
         data.put("db_nodes", nodes);
         data.put("db_edges", edges);
         return data;
-
+    }
+    public ArrayList<Map> findByNodeLike(String keywords) throws IllegalAccessException {
+        List<EventNode> eventNodes = eventNodeRepo.findByNodeLike(keywords);
+        ArrayList<Map> nodes = new ArrayList<>();
+        for(int i=0; i<eventNodes.size(); i ++){
+            Map<String, Object> nodeMap = getObjectToMap(eventNodes.get(i));
+            nodes.add(nodeMap);
+        }
+        return nodes;
     }
 }

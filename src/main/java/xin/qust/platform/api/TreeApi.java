@@ -65,6 +65,7 @@ public class TreeApi {
 
     @RequestMapping("findByLabelLike")
     public Message findByNodeLike(String keyword) throws IllegalAccessException {
+
         ArrayList<Map> nodes = eventGraphService.findByNodeLike(keyword);
         Message message = new Message(ResponseCode.SUCCESS);
         message.setData(nodes);

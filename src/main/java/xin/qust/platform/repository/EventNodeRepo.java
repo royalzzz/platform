@@ -10,4 +10,6 @@ import java.util.List;
 public interface EventNodeRepo extends JpaRepository<EventNode, Long> {
     @Query(value = "select * from event_node where label like %:str%", nativeQuery = true)
     List<EventNode> findByNodeLike(@Param("str") String str);
+
+    List<EventNode> findByLabel(String str);
 }

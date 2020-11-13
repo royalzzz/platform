@@ -70,7 +70,14 @@ public class TreeApi {
         Message message = new Message(ResponseCode.SUCCESS);
         message.setData(nodes);
         return message;
+    }
 
-
+    @RequestMapping("addBiaozhuPair")
+    public Message addBiaozhuPair(String anli,String biaozhun) throws IllegalAccessException {
+//        System.out.println("进入后台" + anli + biaozhun);
+        eventGraphService.addBiaozhuPair(anli, biaozhun);
+        Message message = new Message(ResponseCode.SUCCESS);
+        message.setData("插入成功");
+        return message;
     }
 }

@@ -1,15 +1,11 @@
 package xin.qust.platform.service.common;
 
-import org.junit.Test;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import xin.qust.platform.domain.EventBiaozhuPair;
-import xin.qust.platform.domain.EventEdge;
-import xin.qust.platform.domain.EventNode;
+import xin.qust.platform.domain.*;
 import xin.qust.platform.nlp.WordSplit;
-import xin.qust.platform.repository.EventBiaozhuPairRepo;
-import xin.qust.platform.repository.EventEdgeRepo;
-import xin.qust.platform.repository.EventNodeRepo;
+import xin.qust.platform.repository.*;
 
 
 import java.lang.reflect.Field;
@@ -26,6 +22,12 @@ public class EventGraphService {
 
     @Autowired
     private EventBiaozhuPairRepo eventBiaozhuPairRepo;
+
+    @Autowired
+    private EventTftTableRepo eventTftTableRepo;
+
+    @Autowired
+    private EventAccidentReportRepo eventAccidentReportRepo;
 
     //对象转Map
     public static Map<String, Object> getObjectToMap(Object obj) throws IllegalAccessException {
@@ -101,4 +103,23 @@ public class EventGraphService {
         eventBiaozhuPairRepo.save(pair);
     }
 
+    public ArrayList<Map> getEventTft() throws IllegalAccessException {
+        List<EventTftTable> eventTfts = new ArrayList<>();
+        eventTfts.addAll(eventTftTableRepo.findAll());
+        ArrayList<Map> tfts = new ArrayList<>();
+        for(int i=0; i<eventTfts.size(); i ++){
+            Map<String, Object> nodeMap = getObjectToMap(eventTfts.get(i));
+            tfts.add(nodeMap);}
+        return tfts;
+    }
+
+    public ArrayList<Map> getAccidentReport() throws IllegalAccessException {
+        List<EventAccidentReport> eventaccidentreports = new ArrayList<>();
+        eventaccidentreports.addAll(eventAccidentReportRepo.findAll());
+        ArrayList<Map> accidentreports = new ArrayList<>();
+        for(int i=0; i<eventaccidentreports.size(); i ++){
+            Map<String, Object> nodeMap = getObjectToMap(eventaccidentreports.get(i));
+            accidentreports.add(nodeMap);}
+        return accidentreports;
+    }
 }

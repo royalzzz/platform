@@ -80,4 +80,18 @@ public class TreeApi {
         message.setData("插入成功");
         return message;
     }
+    @RequestMapping("getEventTft")
+    public Message getEventTft() throws IllegalAccessException {
+        ArrayList<Map> reports = eventGraphService.getEventTft();
+        Message message = new Message(ResponseCode.SUCCESS);
+        message.setData(reports);
+        return message;
+    }
+    @RequestMapping("getAccidentReport")
+    public Message getAccidentReport() throws IllegalAccessException {
+        ArrayList<Map> reports = eventGraphService.getAccidentReport();
+        Message message = new Message(ResponseCode.SUCCESS);
+        message.setData(reports);
+        return message;
+    }
 }

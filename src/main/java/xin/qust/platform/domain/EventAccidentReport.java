@@ -11,6 +11,8 @@ public class EventAccidentReport {
 
     private String title;
 
+    private String content;
+
     public Long getId() {
         return id;
     }
@@ -34,6 +36,4 @@ public class EventAccidentReport {
     public void setContent(String content) {
         this.content = content;
     }
-
-    private String content;
 }

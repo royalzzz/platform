@@ -9,8 +9,8 @@ public class EventEdge {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long from;
-    private Long to;
+    private Long fromNode;
+    private Long toNode;
 
     public Long getId() {
         return id;
@@ -20,19 +20,19 @@ public class EventEdge {
         this.id = id;
     }
 
-    public Long getFrom() {
-        return from;
+    public Long getFromNode() {
+        return fromNode;
     }
 
-    public void setFrom(Long from) {
-        this.from = from;
+    public void setFromNode(Long fromNode) {
+        this.fromNode = fromNode;
     }
 
-    public Long getTo() {
-        return to;
+    public Long getToNode() {
+        return toNode;
     }
 
-    public void setTo(Long to) {
-        this.to = to;
+    public void setToNode(Long toNode) {
+        this.toNode = toNode;
     }
 }

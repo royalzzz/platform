@@ -21,11 +21,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .logout().logoutUrl("/logout")
                 .addLogoutHandler(loginMethodConfig.tokenLogoutHandler())
-                .and().authorizeRequests().antMatchers("/loginByEmail", "/loginByUserName", "/user/register").permitAll()
+                .and().authorizeRequests().antMatchers("/loginByEmail", "/loginByUserName", "/user/test").permitAll()
                 .and().authorizeRequests().anyRequest().authenticated()
                 .and()
                 .addFilterBefore(loginMethodConfig.tokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
-                .addFilterAfter(loginMethodConfig.emailLoginFilter(), TokenAuthenticationFilter.class)
+//                .addFilterAfter(loginMethodConfig.emailLoginFilter(), TokenAuthenticationFilter.class)
                 .addFilterAfter(loginMethodConfig.userNameLoginFilter(), TokenAuthenticationFilter.class)
                 .csrf().disable();
     }

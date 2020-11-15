@@ -34,9 +34,9 @@ public class UserApi {
     @Autowired
     private JwtTokenManager jwtTokenManager;
 
-    @RequestMapping("register")
+    @RequestMapping("test")
     public void register () {
-        userRegisterService.addNewUser();
+        System.out.println("success hello test");
     }
 
     @RequestMapping("info")

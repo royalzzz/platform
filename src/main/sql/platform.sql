@@ -11,7 +11,7 @@
  Target Server Version : 50719
  File Encoding         : 65001
 
- Date: 15/11/2020 14:56:04
+ Date: 15/11/2020 22:45:21
 */
 
 SET NAMES utf8mb4;
@@ -222,8 +222,8 @@ INSERT INTO `event_biaozhu_pair` VALUES (4, 'A2$输送油料温度过高引起�
 DROP TABLE IF EXISTS `event_edge`;
 CREATE TABLE `event_edge`  (
   `id` bigint(20) NULL DEFAULT NULL,
-  `from` bigint(20) NULL DEFAULT NULL,
-  `to` bigint(20) NULL DEFAULT NULL
+  `fromNode` bigint(20) NULL DEFAULT NULL,
+  `toNode` bigint(20) NULL DEFAULT NULL
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------

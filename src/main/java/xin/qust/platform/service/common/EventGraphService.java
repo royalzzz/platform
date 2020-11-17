@@ -96,10 +96,12 @@ public class EventGraphService {
         }
         return nodes;
     }
-    public void addBiaozhuPair(String anli,String biaozhun){
+    public void addBiaozhuPair(String anli,String biaozhun, Long source, Long sourceid){
         EventBiaozhuPair pair = new EventBiaozhuPair();
         pair.setAnli(anli);
         pair.setBiaozhun(biaozhun);
+        pair.setSource(source);
+        pair.setSourceid(sourceid);
         eventBiaozhuPairRepo.save(pair);
     }
 
@@ -121,5 +123,14 @@ public class EventGraphService {
             Map<String, Object> nodeMap = getObjectToMap(eventaccidentreports.get(i));
             accidentreports.add(nodeMap);}
         return accidentreports;
+    }
+    public ArrayList<Map> findBiaozhuPairBySourceid(Long source, Long sourceid) throws IllegalAccessException {
+        List<EventBiaozhuPair> eventBiaozhuPairs = eventBiaozhuPairRepo.findBySourceAndSourceid(source,sourceid);
+        ArrayList<Map> eventBiaozhuPairMaps = new ArrayList<>();
+        for(int i=0; i<eventBiaozhuPairs.size(); i++){
+            Map<String, Object> eventBiaozhuPairMap = getObjectToMap(eventBiaozhuPairs.get(i));
+            eventBiaozhuPairMaps.add(eventBiaozhuPairMap);
+        }
+        return eventBiaozhuPairMaps;
     }
 }

@@ -73,9 +73,9 @@ public class TreeApi {
     }
 
     @RequestMapping("addBiaozhuPair")
-    public Message addBiaozhuPair(String anli,String biaozhun) throws IllegalAccessException {
+    public Message addBiaozhuPair(String anli,String biaozhun, Long source, Long sourceid) throws IllegalAccessException {
 //        System.out.println("进入后台" + anli + biaozhun);
-        eventGraphService.addBiaozhuPair(anli, biaozhun);
+        eventGraphService.addBiaozhuPair(anli, biaozhun, source, sourceid);
         Message message = new Message(ResponseCode.SUCCESS);
         message.setData("插入成功");
         return message;
@@ -92,6 +92,14 @@ public class TreeApi {
         ArrayList<Map> reports = eventGraphService.getAccidentReport();
         Message message = new Message(ResponseCode.SUCCESS);
         message.setData(reports);
+        return message;
+    }
+
+    @RequestMapping("findBiaozhuPairBySourceid")
+    public Message findBiaozhuPairBySourceid(Long source, Long sourceid) throws IllegalAccessException {
+        ArrayList<Map> MapList = eventGraphService.findBiaozhuPairBySourceid(source, sourceid);
+        Message message = new Message(ResponseCode.SUCCESS);
+        message.setData(MapList);
         return message;
     }
 }

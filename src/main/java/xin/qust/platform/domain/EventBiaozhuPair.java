@@ -10,6 +10,12 @@ public class EventBiaozhuPair {
 
     private String anli;
 
+    private String biaozhun;
+//  source取值：0-案例树；1-事故报告
+    private Long source;
+
+    private Long sourceid;
+
     public Long getId() {
         return id;
     }
@@ -33,7 +39,20 @@ public class EventBiaozhuPair {
     public void setBiaozhun(String biaozhun) {
         this.biaozhun = biaozhun;
     }
+    public Long getSource() {
+        return source;
+    }
 
-    private String biaozhun;
+    public void setSource(Long source) {
+        this.source = source;
+    }
+
+    public Long getSourceid() {
+        return sourceid;
+    }
+
+    public void setSourceid(Long sourceid) {
+        this.sourceid = sourceid;
+    }
 
 }

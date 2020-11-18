@@ -4,6 +4,8 @@ package xin.qust.platform.service.common;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import xin.qust.platform.domain.*;
+import xin.qust.platform.model.Message;
+import xin.qust.platform.model.ResponseCode;
 import xin.qust.platform.nlp.WordSplit;
 import xin.qust.platform.repository.*;
 
@@ -132,5 +134,20 @@ public class EventGraphService {
             eventBiaozhuPairMaps.add(eventBiaozhuPairMap);
         }
         return eventBiaozhuPairMaps;
+    }
+
+    public Message deletePairById(Long id) {
+        Message message = new Message();
+        Optional<EventBiaozhuPair> eventBiaozhuPair = eventBiaozhuPairRepo.findById(id);
+        if (eventBiaozhuPair.isPresent()){
+            eventBiaozhuPair.get().setSource(99L);
+            eventBiaozhuPairRepo.save(eventBiaozhuPair.get());
+            message.setResponseCode(ResponseCode.SUCCESS);
+            message.setData("成功，修改source字段的记录值为99");
+        }else {
+            message.setResponseCode(ResponseCode.RESULE_DATA_NONE);     //数据未找到
+            message.setData("失败，所删除的数据未找到");
+        }
+        return message;
     }
 }

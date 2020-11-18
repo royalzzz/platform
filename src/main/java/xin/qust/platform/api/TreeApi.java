@@ -102,4 +102,10 @@ public class TreeApi {
         message.setData(MapList);
         return message;
     }
+    @RequestMapping("deletePairById")
+    public Message deletePairById(Long id) {
+//        不删除，设置source值为99
+        Message message = eventGraphService.deletePairById(id);
+        return message;
+    }
 }

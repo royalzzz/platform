@@ -39,7 +39,7 @@ public class EventBiaozhuPair {
     public void setBiaozhun(String biaozhun) {
         this.biaozhun = biaozhun;
     }
-    public Long getSource() {
+    public Long getSource(int i) {
         return source;
     }
 

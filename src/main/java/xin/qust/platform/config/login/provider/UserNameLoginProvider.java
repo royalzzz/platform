@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import xin.qust.platform.model.Message;
-import xin.qust.platform.model.ResponseCode;
+import xin.qust.platform.model.constant.ResponseCode;
 import xin.qust.platform.service.login.UserLoginService;
 
 @Component

@@ -1,4 +1,4 @@
-package xin.qust.platform.model;
+package xin.qust.platform.model.vo;
 
 import xin.qust.platform.domain.UserBasicInfo;
 import xin.qust.platform.domain.UserRole;

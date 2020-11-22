@@ -1,4 +1,4 @@
-package xin.qust.platform.model;
+package xin.qust.platform.model.constant;
 
 public enum ResponseCode {
 

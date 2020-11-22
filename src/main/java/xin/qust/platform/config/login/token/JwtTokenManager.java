@@ -11,8 +11,8 @@ import java.util.Date;
 public class JwtTokenManager implements TokenManager {
 
 //    @Value("${token.expire}")
-    private long tokenExpiration = 60 * 60 * 1000;
-    private String tokenSignKey = "123456";
+    private final long tokenExpiration = 12 * 60 * 60 * 1000;
+    private final String tokenSignKey = "123456";
 
     @Override
     public String createToken(String username) {

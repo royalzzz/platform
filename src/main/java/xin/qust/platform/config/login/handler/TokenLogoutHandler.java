@@ -4,7 +4,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 import xin.qust.platform.config.login.token.TokenManager;
 import xin.qust.platform.model.Message;
-import xin.qust.platform.model.ResponseCode;
+import xin.qust.platform.model.constant.ResponseCode;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

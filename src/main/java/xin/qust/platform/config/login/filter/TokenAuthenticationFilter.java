@@ -29,7 +29,7 @@ public class TokenAuthenticationFilter extends BasicAuthenticationFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
         String header = request.getHeader("token");
-        logger.info(header);
+//        logger.info(header);
         if (header == null) {
             chain.doFilter(request, response);
             return;

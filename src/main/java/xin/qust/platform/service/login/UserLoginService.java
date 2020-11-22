@@ -8,10 +8,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import xin.qust.platform.domain.UserNameLogin;
 import xin.qust.platform.model.Message;
-import xin.qust.platform.model.ResponseCode;
-import xin.qust.platform.repository.UserBasicInfoRepo;
-import xin.qust.platform.repository.UserEmailLoginRepo;
-import xin.qust.platform.repository.UserNameLoginRepo;
+import xin.qust.platform.model.constant.ResponseCode;
+import xin.qust.platform.repository.user.UserBasicInfoRepo;
+import xin.qust.platform.repository.user.UserEmailLoginRepo;
+import xin.qust.platform.repository.user.UserNameLoginRepo;
 
 import java.util.Optional;
 

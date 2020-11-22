@@ -1,17 +1,11 @@
 package xin.qust.platform.api;
 
-import org.apache.tomcat.util.collections.ManagedConcurrentWeakHashMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import xin.qust.platform.config.login.token.JwtTokenManager;
 import xin.qust.platform.model.Message;
-import xin.qust.platform.model.ResponseCode;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import xin.qust.platform.model.constant.ResponseCode;
 
 @RequestMapping("yuqing")
 @RestController

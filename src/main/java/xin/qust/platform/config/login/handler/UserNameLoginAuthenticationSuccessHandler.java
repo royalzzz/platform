@@ -7,7 +7,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import xin.qust.platform.config.login.token.TokenManager;
 import xin.qust.platform.domain.UserNameLogin;
 import xin.qust.platform.model.Message;
-import xin.qust.platform.model.ResponseCode;
+import xin.qust.platform.model.constant.ResponseCode;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

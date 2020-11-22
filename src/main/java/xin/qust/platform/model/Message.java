@@ -1,7 +1,7 @@
 package xin.qust.platform.model;
 
 import com.alibaba.fastjson.JSONObject;
-import xin.qust.platform.model.ResponseCode;
+import xin.qust.platform.model.constant.ResponseCode;
 
 public class Message {
 
@@ -33,20 +33,12 @@ public class Message {
      */
     private Object extra;
 
-    /**
-     * 页号
-     */
-    private Integer pageNum;
+    public static Message createSuccessMessage(Object data) {
+        Message message = new Message(ResponseCode.SUCCESS);
+        message.setData(data);
 
-    /**
-     * 分页大小
-     */
-    private Integer pageSize;
-
-    /**
-     * 总条数
-     */
-    private Integer totalSize;
+        return message;
+    }
 
     public Integer getCode() {
         return code;
@@ -78,30 +70,6 @@ public class Message {
 
     public void setExtra(Object extra) {
         this.extra = extra;
-    }
-
-    public Integer getPageNum() {
-        return pageNum;
-    }
-
-    public void setPageNum(Integer pageNum) {
-        this.pageNum = pageNum;
-    }
-
-    public Integer getPageSize() {
-        return pageSize;
-    }
-
-    public void setPageSize(Integer pageSize) {
-        this.pageSize = pageSize;
-    }
-
-    public Integer getTotalSize() {
-        return totalSize;
-    }
-
-    public void setTotalSize(Integer totalSize) {
-        this.totalSize = totalSize;
     }
 
     public String getToken() {

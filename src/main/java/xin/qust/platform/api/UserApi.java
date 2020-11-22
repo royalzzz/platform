@@ -10,9 +10,9 @@ import xin.qust.platform.config.login.token.JwtTokenManager;
 import xin.qust.platform.domain.UserBasicInfo;
 import xin.qust.platform.domain.UserNameLogin;
 import xin.qust.platform.model.Message;
-import xin.qust.platform.model.ResponseCode;
-import xin.qust.platform.repository.UserBasicInfoRepo;
-import xin.qust.platform.repository.UserNameLoginRepo;
+import xin.qust.platform.model.constant.ResponseCode;
+import xin.qust.platform.repository.user.UserBasicInfoRepo;
+import xin.qust.platform.repository.user.UserNameLoginRepo;
 import xin.qust.platform.service.common.UserRegisterService;
 
 import java.util.Optional;

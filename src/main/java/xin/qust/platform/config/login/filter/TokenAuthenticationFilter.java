@@ -8,12 +8,15 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.util.StringUtils;
 import xin.qust.platform.config.login.token.TokenManager;
+import xin.qust.platform.model.Message;
+import xin.qust.platform.model.constant.ResponseCode;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class TokenAuthenticationFilter extends BasicAuthenticationFilter {
@@ -34,11 +37,21 @@ public class TokenAuthenticationFilter extends BasicAuthenticationFilter {
             chain.doFilter(request, response);
             return;
         }
-        UsernamePasswordAuthenticationToken authentication = getAuthentication(request);
-        if (authentication != null) {
-            SecurityContextHolder.getContext().setAuthentication(authentication);
+        try {
+            UsernamePasswordAuthenticationToken authentication = getAuthentication(request);
+            if (authentication != null) {
+                SecurityContextHolder.getContext().setAuthentication(authentication);
+            }
+            chain.doFilter(request, response);
         }
-        chain.doFilter(request, response);
+        catch (Exception e) {
+            response.setCharacterEncoding("utf-8");
+            response.setContentType("application/json; charset=utf-8");
+            PrintWriter writer = response.getWriter();
+            Message message = new Message();
+            message.setResponseCode(ResponseCode.USER_LOGIN_EXPIRED);
+            writer.write(message.toJsonString());
+        }
     }
 
     private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {

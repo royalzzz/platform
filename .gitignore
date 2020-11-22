@@ -4,6 +4,8 @@
 
 *.iml
 
+*.yml
+
 /.vscode
 
 /.settings

@@ -2,5 +2,5 @@ spring:
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/platform?characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
     username: root
-    password: dotdot
+    password: 123
     driver-class-name: com.mysql.jdbc.Driver

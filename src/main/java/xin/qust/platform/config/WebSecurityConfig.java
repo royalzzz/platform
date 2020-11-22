@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import xin.qust.platform.config.login.LoginMethodConfig;
 import xin.qust.platform.config.login.filter.TokenAuthenticationFilter;
+import xin.qust.platform.config.login.handler.NotRedirectHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -20,7 +21,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .logout().logoutUrl("/logout")
-                .addLogoutHandler(loginMethodConfig.tokenLogoutHandler())
+                .addLogoutHandler(loginMethodConfig.tokenLogoutHandler()).logoutSuccessHandler(new NotRedirectHandler())
                 .and().authorizeRequests().antMatchers("/loginByEmail", "/loginByUserName", "/user/test").permitAll()
                 .and().authorizeRequests().anyRequest().authenticated()
                 .and()

@@ -1,5 +1,7 @@
 package xin.qust.platform.config.login.handler;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 import xin.qust.platform.config.login.token.TokenManager;
@@ -13,7 +15,7 @@ import java.io.PrintWriter;
 public class TokenLogoutHandler implements LogoutHandler {
 
     private TokenManager tokenManager;
-
+    private final Logger logger = LoggerFactory.getLogger(getClass());
     public TokenLogoutHandler(TokenManager tokenManager) {
         this.tokenManager = tokenManager;
     }
@@ -21,6 +23,7 @@ public class TokenLogoutHandler implements LogoutHandler {
     @Override
     public void logout(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) {
         String token = httpServletRequest.getHeader("token");
+        logger.info(token);
         if (token != null) {
             tokenManager.removeToken(token);
         }

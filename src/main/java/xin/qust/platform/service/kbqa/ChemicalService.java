@@ -16,5 +16,6 @@ public class ChemicalService {
 
     public Page<KbqaSdsChemical> findByPage(ChemicalPageVo chemicalPageVo) {
         return kbqaSdsChemicalRepo.findAll(chemicalPageVo);
+//        return kbqaSdsChemicalRepo.findByCas(chemicalPageVo.getcas, chemicalPageVo);
     }
 }

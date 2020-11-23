@@ -56,6 +56,7 @@ public class TokenAuthenticationFilter extends BasicAuthenticationFilter {
             PrintWriter writer = response.getWriter();
             Message message = new Message();
             message.setResponseCode(ResponseCode.USER_LOGIN_EXPIRED);
+            message.setMessage(e.getMessage());
             writer.write(message.toJsonString());
         }
     }

@@ -3,13 +3,17 @@ package xin.qust.platform.api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import xin.qust.platform.config.login.token.JwtTokenManager;
+import xin.qust.platform.domain.EventAccidentReport;
 import xin.qust.platform.model.Message;
 import xin.qust.platform.model.constant.ResponseCode;
-import xin.qust.platform.service.common.EventGraphService;
+import xin.qust.platform.model.vo.PageVo;
+import xin.qust.platform.service.event.EventGraphService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,29 +36,6 @@ public class TreeApi {
 
         Message message = new Message(ResponseCode.SUCCESS);
         Map<String, List> data  = eventGraphService.getBiaozhunTree();
-//        ArrayList<Map> nodes = new ArrayList<>();
-//
-//        Map<String, Object> node = new HashMap<>();
-//        node.put("id",0);
-//        node.put("label","A");
-//        nodes.add(node);
-//
-//        Map<String, Object> node2 = new HashMap<>();
-//        node2.put("id",1);
-//        node2.put("label","B");
-//        nodes.add(node2);
-//
-//
-//        Map<String, Object> edge = new HashMap<>();
-//        edge.put("from", 0);
-//        edge.put("to", 1);
-//        ArrayList<Map> edges = new ArrayList<>();
-//        edges.add(edge);
-//
-//
-//        Map<String, List> data = new HashMap<>();
-//        data.put("db_nodes", nodes);
-//        data.put("db_edges", edges);
         message.setData(data);
         String new_token = jwtTokenManager.createToken(object.toString());
         message.setToken(new_token);
@@ -85,6 +66,13 @@ public class TreeApi {
         message.setData(reports);
         return message;
     }
+
+    @RequestMapping("getEventTftPageable")
+    public Message getEventTftPageable(@RequestBody PageVo pageVo) {
+//        logger.info(pageVo.toString());
+        return Message.createSuccessMessage(eventGraphService.getEventTftPageable(pageVo));
+    }
+
     @RequestMapping("getAccidentReport")
     public Message getAccidentReport() throws IllegalAccessException {
         ArrayList<Map> reports = eventGraphService.getAccidentReport();
@@ -92,6 +80,12 @@ public class TreeApi {
         message.setData(reports);
         return message;
     }
+
+    @RequestMapping("getAccidentReportPageable")
+    public Message getAccidentReportPageable(@RequestBody PageVo pageVo) {
+        return Message.createSuccessMessage(eventGraphService.getAccidentReportPageable(pageVo));
+    }
+
 
     @RequestMapping("findBiaozhuPairBySourceid")
     public Message findBiaozhuPairBySourceid(Long source, Long sourceid) throws IllegalAccessException {
@@ -105,5 +99,15 @@ public class TreeApi {
 //        不删除，设置source值为99
         Message message = eventGraphService.deletePairById(id);
         return message;
+    }
+
+    @RequestMapping("saveReport")
+    public Message saveReport(@RequestBody EventAccidentReport eventAccidentReport) {
+        return eventGraphService.saveReport(eventAccidentReport);
+    }
+
+    @RequestMapping("removeReport")
+    public Message removeReport(Long id) {
+        return eventGraphService.removeReport(id);
     }
 }

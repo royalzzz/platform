@@ -1,11 +1,15 @@
-package xin.qust.platform.service.common;
+package xin.qust.platform.service.event;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import xin.qust.platform.domain.*;
 import xin.qust.platform.model.Message;
 import xin.qust.platform.model.constant.ResponseCode;
+import xin.qust.platform.model.vo.PageVo;
 import xin.qust.platform.nlp.WordSplit;
 import xin.qust.platform.repository.event.*;
 
@@ -15,6 +19,7 @@ import java.util.*;
 
 @Service
 public class EventGraphService {
+    private final Logger logger = LoggerFactory.getLogger(getClass());
     @Autowired
     private EventNodeRepo eventNodeRepo;
     @Autowired
@@ -147,5 +152,40 @@ public class EventGraphService {
             message.setData("失败，所删除的数据未找到");
         }
         return message;
+    }
+
+    public Object getEventTftPageable(Pageable pageable) {
+        return eventTftTableRepo.findAll(pageable);
+    }
+
+    public Object getAccidentReportPageable(Pageable pageable) {
+        return eventAccidentReportRepo.findAll(pageable);
+
+    }
+
+    public Message saveReport(EventAccidentReport eventAccidentReport) {
+        Message message = new Message();
+        try{
+            eventAccidentReportRepo.save(eventAccidentReport);
+            message.setResponseCode(ResponseCode.SUCCESS);
+            return message;
+        }catch (Exception e){
+            logger.error(e.getMessage());
+            message.setResponseCode(ResponseCode.SPECIFIED_QUESTIONED_USER_NOT_EXIST);
+            return  message;
+        }
+    }
+
+    public Message removeReport(Long id) {
+        Message message = new Message();
+        try{
+            eventAccidentReportRepo.deleteById(id);
+            message.setResponseCode(ResponseCode.SUCCESS);
+            return message;
+        }catch (Exception e){
+            logger.error(e.getMessage());
+            message.setResponseCode(ResponseCode.SPECIFIED_QUESTIONED_USER_NOT_EXIST);
+            return  message;
+        }
     }
 }

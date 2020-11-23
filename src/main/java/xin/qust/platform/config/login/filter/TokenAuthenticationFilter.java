@@ -13,6 +13,7 @@ import xin.qust.platform.model.constant.ResponseCode;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -31,14 +32,19 @@ public class TokenAuthenticationFilter extends BasicAuthenticationFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
-        String header = request.getHeader("token");
-//        logger.info(header);
-        if (header == null) {
+        String token = request.getHeader("token");
+        Cookie[] cookies = request.getCookies();
+        for (Cookie cookie: cookies) {
+            if (cookie.getName().equals("token")) {
+                token = cookie.getValue();
+            }
+        }
+        if (token == null) {
             chain.doFilter(request, response);
             return;
         }
         try {
-            UsernamePasswordAuthenticationToken authentication = getAuthentication(request);
+            UsernamePasswordAuthenticationToken authentication = getAuthentication(token);
             if (authentication != null) {
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
@@ -54,8 +60,7 @@ public class TokenAuthenticationFilter extends BasicAuthenticationFilter {
         }
     }
 
-    private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
-        String token = request.getHeader("token");
+    private UsernamePasswordAuthenticationToken getAuthentication(String token) {
         if (token != null && !"".equals(token.trim())) {
             String userName = tokenManager.getUserFromToken(token);
             if (!StringUtils.isEmpty(userName)) {

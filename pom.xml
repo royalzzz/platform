@@ -20,6 +20,14 @@
         <grpc.version>1.22.1</grpc.version>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>es-snapshots</id>
+            <name>elasticsearch snapshot repo</name>
+            <url>https://snapshots.elastic.co/maven/</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -98,6 +106,21 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.elasticsearch.client</groupId>
+            <artifactId>elasticsearch-rest-high-level-client</artifactId>
+            <version>7.10.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.elasticsearch.client</groupId>
+            <artifactId>elasticsearch-rest-client</artifactId>
+            <version>7.10.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.elasticsearch</groupId>
+            <artifactId>elasticsearch</artifactId>
+            <version>7.10.0</version>
         </dependency>
     </dependencies>
 

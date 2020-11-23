@@ -21,8 +21,6 @@ public class UserNameLoginFilter extends AbstractAuthenticationProcessingFilter 
     public Authentication attemptAuthentication(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws AuthenticationException, IOException, ServletException {
         String username = httpServletRequest.getParameter("username");
         String password = httpServletRequest.getParameter("password");
-        System.out.println(username);
-        System.out.println(password);
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(username, password);
         token.setDetails(this.authenticationDetailsSource.buildDetails(httpServletRequest));
         return this.getAuthenticationManager().authenticate(token);

@@ -7,28 +7,26 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
+import static xin.qust.platform.model.constant.ConfigSettings.TOKEN_EXPIRED_TIME;
+import static xin.qust.platform.model.constant.ConfigSettings.TOKEN_SIGN_KEY;
+
 @Component
 public class JwtTokenManager implements TokenManager {
-
-//    @Value("${token.expire}")
-    private final long tokenExpiration = 10 * 60 * 60 * 1000;
-    private final String tokenSignKey = "123456";
 
     @Override
     public String createToken(String username) {
         return Jwts.builder().setSubject(username)
-                .setExpiration(new Date(System.currentTimeMillis() + tokenExpiration))
-                .signWith(SignatureAlgorithm.HS512, tokenSignKey).compressWith(CompressionCodecs.GZIP).compact();
+                .setExpiration(new Date(System.currentTimeMillis() + TOKEN_EXPIRED_TIME))
+                .signWith(SignatureAlgorithm.HS512, TOKEN_SIGN_KEY).compressWith(CompressionCodecs.GZIP).compact();
     }
 
     @Override
     public String getUserFromToken(String token) {
-        return Jwts.parser().setSigningKey(tokenSignKey).parseClaimsJws(token).getBody().getSubject();
+        return Jwts.parser().setSigningKey(TOKEN_SIGN_KEY).parseClaimsJws(token).getBody().getSubject();
     }
 
     @Override
     public void removeToken(String token) {
-        // 无需删除，客户端扔掉即可
-        
+        Jwts.parser().setSigningKey(TOKEN_SIGN_KEY).parseClaimsJws(token).getBody().setExpiration(new Date());
     }
 }

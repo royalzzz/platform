@@ -34,9 +34,11 @@ public class TokenAuthenticationFilter extends BasicAuthenticationFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
         String token = request.getHeader("token");
         Cookie[] cookies = request.getCookies();
-        for (Cookie cookie: cookies) {
-            if (cookie.getName().equals("token")) {
-                token = cookie.getValue();
+        if (cookies != null && cookies.length > 0) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("token")) {
+                    token = cookie.getValue();
+                }
             }
         }
         if (token == null) {
@@ -48,7 +50,6 @@ public class TokenAuthenticationFilter extends BasicAuthenticationFilter {
             if (authentication != null) {
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
-            chain.doFilter(request, response);
         }
         catch (Exception e) {
             response.setCharacterEncoding("utf-8");
@@ -57,7 +58,9 @@ public class TokenAuthenticationFilter extends BasicAuthenticationFilter {
             Message message = new Message();
             message.setResponseCode(ResponseCode.USER_LOGIN_EXPIRED);
             writer.write(message.toJsonString());
+            chain.doFilter(request, response);
         }
+        chain.doFilter(request, response);
     }
 
     private UsernamePasswordAuthenticationToken getAuthentication(String token) {

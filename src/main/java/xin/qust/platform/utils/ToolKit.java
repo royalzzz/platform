@@ -1,5 +1,7 @@
 package xin.qust.platform.utils;
 
+import com.alibaba.fastjson.JSONObject;
+
 import java.lang.reflect.Field;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -19,5 +21,10 @@ public class ToolKit {
             map.put(fieldName, value);
         }
         return map;
+    }
+
+    public static String mapToJsonString(Map<String, Object> jsonMap) {
+        JSONObject jsonObj = new JSONObject(jsonMap);
+        return jsonObj.toString();
     }
 }

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import xin.qust.platform.config.login.token.EmailPasswordAuthenticationToken;
 
 @Component
-public class EmailLoginProvider implements AuthenticationProvider {
+public class EmailPasswordLoginProvider implements AuthenticationProvider {
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {

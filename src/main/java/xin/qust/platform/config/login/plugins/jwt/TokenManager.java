@@ -1,4 +1,4 @@
-package xin.qust.platform.config.login.token;
+package xin.qust.platform.config.login.plugins.jwt;
 
 public interface TokenManager {
     public String createToken(String username);

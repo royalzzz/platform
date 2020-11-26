@@ -33,10 +33,13 @@ public class Message {
      */
     private Object extra;
 
+    public static Message createSuccessMessage() {
+        return new Message(ResponseCode.SUCCESS);
+    }
+
     public static Message createSuccessMessage(Object data) {
         Message message = new Message(ResponseCode.SUCCESS);
         message.setData(data);
-
         return message;
     }
 

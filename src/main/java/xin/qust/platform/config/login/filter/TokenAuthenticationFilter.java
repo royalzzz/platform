@@ -7,7 +7,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.util.StringUtils;
-import xin.qust.platform.config.login.token.TokenManager;
+import xin.qust.platform.config.login.plugins.jwt.TokenManager;
 import xin.qust.platform.model.Message;
 import xin.qust.platform.model.constant.ResponseCode;
 

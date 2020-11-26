@@ -23,14 +23,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import xin.qust.platform.domain.KbqaSdsChemical;
+import xin.qust.platform.model.Message;
 import xin.qust.platform.repository.kbqa.KbqaSdsChemicalRepo;
 import xin.qust.platform.service.common.ElasticService;
+import xin.qust.platform.service.kbqa.ProcessChemicalService;
 
 import java.util.*;
 
 import static xin.qust.platform.utils.ToolKit.mapToJsonString;
 
-@RequestMapping("es_demo")
+@RequestMapping("kbqa/es_demo")
 @RestController
 public class ElasticSearchDemoApi {
 
@@ -38,6 +40,8 @@ public class ElasticSearchDemoApi {
 
     @Autowired
     private ElasticService elasticService;
+    @Autowired
+    private ProcessChemicalService processChemicalService;
 
     @RequestMapping("createIndex")
     public void createIndex(String indexName, @RequestBody Map<String, Object> jsonSource) {
@@ -63,7 +67,6 @@ public class ElasticSearchDemoApi {
 
     @RequestMapping("getIndex")
     public GetResponse getIndex(String indexName) {
-        logger.info("get index: " + indexName);
         return elasticService.getIndex(indexName);
     }
 
@@ -74,14 +77,19 @@ public class ElasticSearchDemoApi {
     }
 
     @RequestMapping("search")
-    public SearchResponse search(String indexName, String key, String value) {
-        logger.info("index: " + indexName);
+    public Message search(String indexName, String key, String value) {
         if (indexName == null) {
-            return elasticService.searchByKey(key, value);
+            return Message.createSuccessMessage(elasticService.searchByKey(key, value));
         }
         else {
-            return elasticService.searchByIndexAndKey(indexName, key, value);
+            return Message.createSuccessMessage(elasticService.searchByIndexAndKey(indexName, key, value));
         }
+    }
+
+    @RequestMapping("sds")
+    public Message sds() {
+        processChemicalService.importSDS("chemical");
+        return Message.createSuccessMessage();
     }
 
 }

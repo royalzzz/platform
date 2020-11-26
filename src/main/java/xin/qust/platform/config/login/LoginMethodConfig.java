@@ -14,9 +14,9 @@ import xin.qust.platform.config.login.filter.UserNameLoginFilter;
 import xin.qust.platform.config.login.handler.TokenLogoutHandler;
 import xin.qust.platform.config.login.handler.UserNameLoginAuthenticationFailureHandler;
 import xin.qust.platform.config.login.handler.UserNameLoginAuthenticationSuccessHandler;
-import xin.qust.platform.config.login.provider.EmailLoginProvider;
-import xin.qust.platform.config.login.provider.UserNameLoginProvider;
-import xin.qust.platform.config.login.token.JwtTokenManager;
+import xin.qust.platform.config.login.provider.EmailPasswordLoginProvider;
+import xin.qust.platform.config.login.provider.UserNamePasswordLoginProvider;
+import xin.qust.platform.config.login.plugins.jwt.JwtTokenManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,10 +28,10 @@ public class LoginMethodConfig {
     private JwtTokenManager jwtTokenManager;
 
     @Autowired
-    private EmailLoginProvider emailLoginProvider;
+    private EmailPasswordLoginProvider emailPasswordLoginProvider;
 
     @Autowired
-    private UserNameLoginProvider userNameLoginProvider;
+    private UserNamePasswordLoginProvider userNamePasswordLoginProvider;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -46,8 +46,8 @@ public class LoginMethodConfig {
     @Bean
     public AuthenticationManager authenticationManager() {
         List<AuthenticationProvider> providers = new ArrayList<>();
-        providers.add(emailLoginProvider);
-        providers.add(userNameLoginProvider);
+        providers.add(emailPasswordLoginProvider);
+        providers.add(userNamePasswordLoginProvider);
         return new ProviderManager(providers);
     }
 

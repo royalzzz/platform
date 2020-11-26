@@ -14,8 +14,10 @@ import xin.qust.platform.model.Message;
 import xin.qust.platform.model.constant.ResponseCode;
 import xin.qust.platform.service.login.UserLoginService;
 
+import java.util.ArrayList;
+
 @Component
-public class UserNameLoginProvider implements AuthenticationProvider {
+public class UserNamePasswordLoginProvider implements AuthenticationProvider {
 
     @Autowired
     private UserLoginService userLoginService;
@@ -45,7 +47,7 @@ public class UserNameLoginProvider implements AuthenticationProvider {
         //获取用户权限信息
         // Collection<? extends GrantedAuthority> authorities = user.getAuthorities();
         // return new UsernamePasswordAuthenticationToken(user, password, authorities);
-        return new UsernamePasswordAuthenticationToken(user, password);
+        return new UsernamePasswordAuthenticationToken(user, password, new ArrayList<>());
     }
 
     @Override

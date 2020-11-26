@@ -30,29 +30,17 @@ public class ProcessChemicalService {
             List<String> names = new ArrayList<>();
             names.add(chemical.getChineseName());
             names.add(chemical.getEnglishName());
-            if (chemical.getOtherChineseName() != null && chemical.getOtherChineseName().contains(";")) {
-                String[] cnNames = chemical.getOtherChineseName().split(";");
+            if (chemical.getOtherChineseName() != null) {
+                String[] cnNames = chemical.getOtherChineseName().replaceAll("；", ";").split(";");
                 names.addAll(Arrays.asList(cnNames));
             }
 
-            if (chemical.getOtherChineseName() != null && chemical.getOtherChineseName().contains("；")) {
-                String[] cnNames = chemical.getOtherChineseName().split("；");
-                names.addAll(Arrays.asList(cnNames));
-            }
-
-            if (chemical.getOtherEnglishName() != null && chemical.getOtherEnglishName().contains(";")) {
-                String[] enNames = chemical.getOtherEnglishName().split(";");
-                names.addAll(Arrays.asList(enNames));
-
-            }
-
-            if (chemical.getOtherEnglishName() != null && chemical.getOtherEnglishName().contains("；")) {
-                String[] enNames = chemical.getOtherEnglishName().split("；");
+            if (chemical.getOtherEnglishName() != null) {
+                String[] enNames = chemical.getOtherEnglishName().replaceAll("；", ";").split(";");
                 names.addAll(Arrays.asList(enNames));
             }
 
             for (String name: names) {
-                System.out.println(name);
                 Map<String, Object> jsonSource = new HashMap<>();
                 jsonSource.put("name", name);
                 jsonSource.put("chemical_id", chemical.getId());

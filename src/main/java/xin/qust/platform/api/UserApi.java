@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import xin.qust.platform.config.login.token.JwtTokenManager;
+import xin.qust.platform.config.login.plugins.jwt.JwtTokenManager;
 import xin.qust.platform.domain.UserBasicInfo;
 import xin.qust.platform.domain.UserNameLogin;
 import xin.qust.platform.model.Message;

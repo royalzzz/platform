@@ -11,6 +11,7 @@ import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.support.IndicesOptions;
+import org.elasticsearch.action.support.master.AcknowledgedResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.client.indices.CreateIndexRequest;
@@ -31,6 +32,9 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+
+import static xin.qust.platform.utils.ToolKit.mapToJsonString;
 
 @Component
 public class ElasticService {
@@ -42,7 +46,7 @@ public class ElasticService {
 
     public void createIndex(String idxName, String idxSQL) {
         try {
-            if (!this.isExistsIndex(idxName)) {
+            if (this.isExistsIndex(idxName)) {
                 log.error("{}已经存在, {}", idxName, idxSQL);
                 return;
             }
@@ -89,16 +93,19 @@ public class ElasticService {
         }
     }
 
-//    public void insertBatch(String idxName, List<ElasticEntity> list) {
-//        BulkRequest request = new BulkRequest();
-//        list.forEach(item -> request.add(new IndexRequest(idxName).id(item.getId())
-//                .source(item.getData(), XContentType.JSON)));
-//        try {
-//            restHighLevelClient.bulk(request, RequestOptions.DEFAULT);
-//        } catch (Exception e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
+    public void insertBatch(String idxName, List<Map<String, Object>> jsonSource) {
+        BulkRequest request = new BulkRequest();
+        for (Map<String, Object> map : jsonSource) {
+            request.add(new IndexRequest(idxName)
+                    .source(mapToJsonString(map), XContentType.JSON));
+        }
+        try {
+            restHighLevelClient.bulk(request, RequestOptions.DEFAULT);
+            log.info("bulk size = " + jsonSource.size());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public <T> void deleteBatch(String idxName, Collection<T> idList) {
         BulkRequest request = new BulkRequest();
@@ -110,8 +117,8 @@ public class ElasticService {
         }
     }
 
-    public GetResponse getIndex(String indexName, String id) {
-        GetRequest getRequest = new GetRequest(indexName, id);
+    public GetResponse getIndex(String indexName) {
+        GetRequest getRequest = new GetRequest(indexName);
         try {
             return restHighLevelClient.get(getRequest, RequestOptions.DEFAULT);
         }
@@ -120,7 +127,20 @@ public class ElasticService {
         }
     }
 
-    public SearchResponse search(String idxName, String key, String value) {
+    public SearchResponse searchByKey(String key, String value) {
+        SearchRequest searchRequest = new SearchRequest();
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+//        searchSourceBuilder.query(QueryBuilders.matchAllQuery());
+        searchSourceBuilder.query(QueryBuilders.matchQuery(key, value));
+        searchRequest.source(searchSourceBuilder);
+        try {
+            return restHighLevelClient.search(searchRequest, RequestOptions.DEFAULT);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public SearchResponse searchByIndexAndKey(String idxName, String key, String value) {
         SearchRequest searchRequest = new SearchRequest(idxName);
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
 //        searchSourceBuilder.query(QueryBuilders.matchAllQuery());
@@ -133,15 +153,11 @@ public class ElasticService {
         }
     }
 
-    public void deleteIndex(String idxName) {
+    public AcknowledgedResponse deleteIndex(String idxName) {
         try {
-            if (!this.isExistsIndex(idxName)) {
-                log.error(" idxName={} 已经存在", idxName);
-                return;
-            }
-            restHighLevelClient.indices().delete(new DeleteIndexRequest(idxName), RequestOptions.DEFAULT);
+            return restHighLevelClient.indices().delete(new DeleteIndexRequest(idxName), RequestOptions.DEFAULT);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            return null;
         }
     }
 

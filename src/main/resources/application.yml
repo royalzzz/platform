@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: zsl
+    active: royal
   jpa:
     open-in-view: true
     show-sql: false

@@ -1,4 +1,4 @@
-package xin.qust.platform.api;
+package xin.qust.platform.api.yuqing;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

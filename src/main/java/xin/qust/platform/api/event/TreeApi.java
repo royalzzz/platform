@@ -1,4 +1,4 @@
-package xin.qust.platform.api;
+package xin.qust.platform.api.event;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,6 +58,7 @@ public class TreeApi {
         message.setData("插入成功");
         return message;
     }
+
     @RequestMapping("getEventTft")
     public Message getEventTft() throws IllegalAccessException {
         ArrayList<Map> reports = eventGraphService.getEventTft();
@@ -93,6 +94,7 @@ public class TreeApi {
         message.setData(MapList);
         return message;
     }
+
     @RequestMapping("deletePairById")
     public Message deletePairById(Long id) {
 //        不删除，设置source值为99

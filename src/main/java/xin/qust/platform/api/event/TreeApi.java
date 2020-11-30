@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import xin.qust.platform.config.login.plugins.jwt.JwtTokenManager;
 import xin.qust.platform.domain.EventAccidentReport;
+import xin.qust.platform.domain.EventNodeBiaozhuPair;
 import xin.qust.platform.model.Message;
 import xin.qust.platform.model.constant.ResponseCode;
 import xin.qust.platform.model.vo.PageVo;
@@ -110,5 +111,51 @@ public class TreeApi {
     @RequestMapping("removeReport")
     public Message removeReport(Long id) {
         return eventGraphService.removeReport(id);
+    }
+
+    @RequestMapping("addEventNodeBiaozhuPair")
+    public Message addEventNodeBiaozhuPair(Long id, String label, String biaozhutext){
+        Message message = new Message();
+        try{
+//            System.out.println(biaozhutext);
+            eventGraphService.addEventNodeBiaozhuPair(id, label, biaozhutext);
+            message.setResponseCode(ResponseCode.SUCCESS).setData("插入概念图节点标注 成功。");
+        }catch (Exception e){
+            message.setResponseCode(ResponseCode.SPECIFIED_QUESTIONED_USER_NOT_EXIST).setData("插入概念图节点标注 出错。");
+        }
+        return message;
+    }
+    @RequestMapping("findEventNodeBiaozhuPairbyNodeid")
+    public Message findEventNodeBiaozhuPairbyNodeid(Long nodeid) {
+        Message message = new Message();
+        try {
+            List<EventNodeBiaozhuPair> eventNodeBiaozhuPairs = eventGraphService.findEventNodeBiaozhuPairbyNodeid(nodeid);
+            message.setResponseCode(ResponseCode.SUCCESS).setData(eventNodeBiaozhuPairs);
+        }catch (Exception e){
+            message.setResponseCode(ResponseCode.SPECIFIED_QUESTIONED_USER_NOT_EXIST).setData("通过nodeid获得标注记录 出错。");
+        }
+        return message;
+    }
+    @RequestMapping("findAllEventNodeBiaozhuPairPageable")
+    public Message findAllEventNodeBiaozhuPairPageable(@RequestBody PageVo pageVo) {
+        Message message = new Message();
+        try {
+            Object eventNodeBiaozhuPairs = eventGraphService.findAllEventNodeBiaozhuPair(pageVo);
+            message.setResponseCode(ResponseCode.SUCCESS).setData(eventNodeBiaozhuPairs);
+        }catch (Exception e){
+            message.setResponseCode(ResponseCode.SPECIFIED_QUESTIONED_USER_NOT_EXIST).setData("通过nodeid获得标注记录 出错。");
+        }
+        return message;
+    }
+    @RequestMapping("deleteNodeBiaozhuPairById")
+    public Message deleteNodeBiaozhuPairById(Long id) {
+        Message message = new Message();
+        try {
+            eventGraphService.deleteNodeBiaozhuPairById(id);
+            message.setResponseCode(ResponseCode.SUCCESS).setData("已经成功删除标准图节点的一个标注记录， Id：" + id.toString());
+        }catch (Exception e) {
+            message.setResponseCode(ResponseCode.SPECIFIED_QUESTIONED_USER_NOT_EXIST).setData("删除标准图节点的一个标注记录 出错。");
+        }
+        return message;
     }
 }

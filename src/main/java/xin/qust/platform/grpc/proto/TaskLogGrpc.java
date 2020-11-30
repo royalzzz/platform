@@ -1,18 +1,10 @@
 package xin.qust.platform.grpc.proto;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
-import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
-import static io.grpc.stub.ClientCalls.asyncClientStreamingCall;
-import static io.grpc.stub.ClientCalls.asyncServerStreamingCall;
 import static io.grpc.stub.ClientCalls.asyncUnaryCall;
-import static io.grpc.stub.ClientCalls.blockingServerStreamingCall;
 import static io.grpc.stub.ClientCalls.blockingUnaryCall;
 import static io.grpc.stub.ClientCalls.futureUnaryCall;
-import static io.grpc.stub.ServerCalls.asyncBidiStreamingCall;
-import static io.grpc.stub.ServerCalls.asyncClientStreamingCall;
-import static io.grpc.stub.ServerCalls.asyncServerStreamingCall;
 import static io.grpc.stub.ServerCalls.asyncUnaryCall;
-import static io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall;
 import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 
 /**
@@ -30,30 +22,30 @@ public final class TaskLogGrpc {
   public static final String SERVICE_NAME = "proto.TaskLog";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<xin.qust.platform.grpc.proto.TaskLogProto.LogRequest,
-      xin.qust.platform.grpc.proto.TaskLogProto.LogReply> getCollectLogMethod;
+  private static volatile io.grpc.MethodDescriptor<TaskLogProto.LogRequest,
+      TaskLogProto.LogReply> getCollectLogMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "collectLog",
-      requestType = xin.qust.platform.grpc.proto.TaskLogProto.LogRequest.class,
-      responseType = xin.qust.platform.grpc.proto.TaskLogProto.LogReply.class,
+      requestType = TaskLogProto.LogRequest.class,
+      responseType = TaskLogProto.LogReply.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<xin.qust.platform.grpc.proto.TaskLogProto.LogRequest,
-      xin.qust.platform.grpc.proto.TaskLogProto.LogReply> getCollectLogMethod() {
-    io.grpc.MethodDescriptor<xin.qust.platform.grpc.proto.TaskLogProto.LogRequest, xin.qust.platform.grpc.proto.TaskLogProto.LogReply> getCollectLogMethod;
+  public static io.grpc.MethodDescriptor<TaskLogProto.LogRequest,
+      TaskLogProto.LogReply> getCollectLogMethod() {
+    io.grpc.MethodDescriptor<TaskLogProto.LogRequest, TaskLogProto.LogReply> getCollectLogMethod;
     if ((getCollectLogMethod = TaskLogGrpc.getCollectLogMethod) == null) {
       synchronized (TaskLogGrpc.class) {
         if ((getCollectLogMethod = TaskLogGrpc.getCollectLogMethod) == null) {
           TaskLogGrpc.getCollectLogMethod = getCollectLogMethod = 
-              io.grpc.MethodDescriptor.<xin.qust.platform.grpc.proto.TaskLogProto.LogRequest, xin.qust.platform.grpc.proto.TaskLogProto.LogReply>newBuilder()
+              io.grpc.MethodDescriptor.<TaskLogProto.LogRequest, TaskLogProto.LogReply>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "proto.TaskLog", "collectLog"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  xin.qust.platform.grpc.proto.TaskLogProto.LogRequest.getDefaultInstance()))
+                  TaskLogProto.LogRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  xin.qust.platform.grpc.proto.TaskLogProto.LogReply.getDefaultInstance()))
+                  TaskLogProto.LogReply.getDefaultInstance()))
                   .setSchemaDescriptor(new TaskLogMethodDescriptorSupplier("collectLog"))
                   .build();
           }
@@ -97,19 +89,19 @@ public final class TaskLogGrpc {
      *服务端接口方法
      * </pre>
      */
-    public void collectLog(xin.qust.platform.grpc.proto.TaskLogProto.LogRequest request,
-        io.grpc.stub.StreamObserver<xin.qust.platform.grpc.proto.TaskLogProto.LogReply> responseObserver) {
+    public void collectLog(TaskLogProto.LogRequest request,
+                           io.grpc.stub.StreamObserver<TaskLogProto.LogReply> responseObserver) {
       asyncUnimplementedUnaryCall(getCollectLogMethod(), responseObserver);
     }
 
-    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
+    @Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
             getCollectLogMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                xin.qust.platform.grpc.proto.TaskLogProto.LogRequest,
-                xin.qust.platform.grpc.proto.TaskLogProto.LogReply>(
+                TaskLogProto.LogRequest,
+                TaskLogProto.LogReply>(
                   this, METHODID_COLLECT_LOG)))
           .build();
     }
@@ -130,7 +122,7 @@ public final class TaskLogGrpc {
       super(channel, callOptions);
     }
 
-    @java.lang.Override
+    @Override
     protected TaskLogStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       return new TaskLogStub(channel, callOptions);
@@ -141,8 +133,8 @@ public final class TaskLogGrpc {
      *服务端接口方法
      * </pre>
      */
-    public void collectLog(xin.qust.platform.grpc.proto.TaskLogProto.LogRequest request,
-        io.grpc.stub.StreamObserver<xin.qust.platform.grpc.proto.TaskLogProto.LogReply> responseObserver) {
+    public void collectLog(TaskLogProto.LogRequest request,
+                           io.grpc.stub.StreamObserver<TaskLogProto.LogReply> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getCollectLogMethod(), getCallOptions()), request, responseObserver);
     }
@@ -163,7 +155,7 @@ public final class TaskLogGrpc {
       super(channel, callOptions);
     }
 
-    @java.lang.Override
+    @Override
     protected TaskLogBlockingStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       return new TaskLogBlockingStub(channel, callOptions);
@@ -174,7 +166,7 @@ public final class TaskLogGrpc {
      *服务端接口方法
      * </pre>
      */
-    public xin.qust.platform.grpc.proto.TaskLogProto.LogReply collectLog(xin.qust.platform.grpc.proto.TaskLogProto.LogRequest request) {
+    public TaskLogProto.LogReply collectLog(TaskLogProto.LogRequest request) {
       return blockingUnaryCall(
           getChannel(), getCollectLogMethod(), getCallOptions(), request);
     }
@@ -195,7 +187,7 @@ public final class TaskLogGrpc {
       super(channel, callOptions);
     }
 
-    @java.lang.Override
+    @Override
     protected TaskLogFutureStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       return new TaskLogFutureStub(channel, callOptions);
@@ -206,8 +198,8 @@ public final class TaskLogGrpc {
      *服务端接口方法
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<xin.qust.platform.grpc.proto.TaskLogProto.LogReply> collectLog(
-        xin.qust.platform.grpc.proto.TaskLogProto.LogRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<TaskLogProto.LogReply> collectLog(
+        TaskLogProto.LogRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getCollectLogMethod(), getCallOptions()), request);
     }
@@ -228,21 +220,21 @@ public final class TaskLogGrpc {
       this.methodId = methodId;
     }
 
-    @java.lang.Override
-    @java.lang.SuppressWarnings("unchecked")
+    @Override
+    @SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_COLLECT_LOG:
-          serviceImpl.collectLog((xin.qust.platform.grpc.proto.TaskLogProto.LogRequest) request,
-              (io.grpc.stub.StreamObserver<xin.qust.platform.grpc.proto.TaskLogProto.LogReply>) responseObserver);
+          serviceImpl.collectLog((TaskLogProto.LogRequest) request,
+              (io.grpc.stub.StreamObserver<TaskLogProto.LogReply>) responseObserver);
           break;
         default:
           throw new AssertionError();
       }
     }
 
-    @java.lang.Override
-    @java.lang.SuppressWarnings("unchecked")
+    @Override
+    @SuppressWarnings("unchecked")
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
@@ -256,12 +248,12 @@ public final class TaskLogGrpc {
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
     TaskLogBaseDescriptorSupplier() {}
 
-    @java.lang.Override
+    @Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return xin.qust.platform.grpc.proto.TaskLogProto.getDescriptor();
+      return TaskLogProto.getDescriptor();
     }
 
-    @java.lang.Override
+    @Override
     public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
       return getFileDescriptor().findServiceByName("TaskLog");
     }
@@ -281,7 +273,7 @@ public final class TaskLogGrpc {
       this.methodName = methodName;
     }
 
-    @java.lang.Override
+    @Override
     public com.google.protobuf.Descriptors.MethodDescriptor getMethodDescriptor() {
       return getServiceDescriptor().findMethodByName(methodName);
     }

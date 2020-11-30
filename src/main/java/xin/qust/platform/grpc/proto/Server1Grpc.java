@@ -1,18 +1,10 @@
 package xin.qust.platform.grpc.proto;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
-import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
-import static io.grpc.stub.ClientCalls.asyncClientStreamingCall;
-import static io.grpc.stub.ClientCalls.asyncServerStreamingCall;
 import static io.grpc.stub.ClientCalls.asyncUnaryCall;
-import static io.grpc.stub.ClientCalls.blockingServerStreamingCall;
 import static io.grpc.stub.ClientCalls.blockingUnaryCall;
 import static io.grpc.stub.ClientCalls.futureUnaryCall;
-import static io.grpc.stub.ServerCalls.asyncBidiStreamingCall;
-import static io.grpc.stub.ServerCalls.asyncClientStreamingCall;
-import static io.grpc.stub.ServerCalls.asyncServerStreamingCall;
 import static io.grpc.stub.ServerCalls.asyncUnaryCall;
-import static io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall;
 import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 
 /**
@@ -30,30 +22,30 @@ public final class Server1Grpc {
   public static final String SERVICE_NAME = "proto.Server1";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<xin.qust.platform.grpc.proto.Server1Proto.Fun1Request,
-      xin.qust.platform.grpc.proto.Server1Proto.Fun1Reply> getFun1Method;
+  private static volatile io.grpc.MethodDescriptor<Server1Proto.Fun1Request,
+      Server1Proto.Fun1Reply> getFun1Method;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "fun1",
-      requestType = xin.qust.platform.grpc.proto.Server1Proto.Fun1Request.class,
-      responseType = xin.qust.platform.grpc.proto.Server1Proto.Fun1Reply.class,
+      requestType = Server1Proto.Fun1Request.class,
+      responseType = Server1Proto.Fun1Reply.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<xin.qust.platform.grpc.proto.Server1Proto.Fun1Request,
-      xin.qust.platform.grpc.proto.Server1Proto.Fun1Reply> getFun1Method() {
-    io.grpc.MethodDescriptor<xin.qust.platform.grpc.proto.Server1Proto.Fun1Request, xin.qust.platform.grpc.proto.Server1Proto.Fun1Reply> getFun1Method;
+  public static io.grpc.MethodDescriptor<Server1Proto.Fun1Request,
+      Server1Proto.Fun1Reply> getFun1Method() {
+    io.grpc.MethodDescriptor<Server1Proto.Fun1Request, Server1Proto.Fun1Reply> getFun1Method;
     if ((getFun1Method = Server1Grpc.getFun1Method) == null) {
       synchronized (Server1Grpc.class) {
         if ((getFun1Method = Server1Grpc.getFun1Method) == null) {
           Server1Grpc.getFun1Method = getFun1Method = 
-              io.grpc.MethodDescriptor.<xin.qust.platform.grpc.proto.Server1Proto.Fun1Request, xin.qust.platform.grpc.proto.Server1Proto.Fun1Reply>newBuilder()
+              io.grpc.MethodDescriptor.<Server1Proto.Fun1Request, Server1Proto.Fun1Reply>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "proto.Server1", "fun1"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  xin.qust.platform.grpc.proto.Server1Proto.Fun1Request.getDefaultInstance()))
+                  Server1Proto.Fun1Request.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  xin.qust.platform.grpc.proto.Server1Proto.Fun1Reply.getDefaultInstance()))
+                  Server1Proto.Fun1Reply.getDefaultInstance()))
                   .setSchemaDescriptor(new Server1MethodDescriptorSupplier("fun1"))
                   .build();
           }
@@ -97,19 +89,19 @@ public final class Server1Grpc {
      *服务端接口方法
      * </pre>
      */
-    public void fun1(xin.qust.platform.grpc.proto.Server1Proto.Fun1Request request,
-        io.grpc.stub.StreamObserver<xin.qust.platform.grpc.proto.Server1Proto.Fun1Reply> responseObserver) {
+    public void fun1(Server1Proto.Fun1Request request,
+                     io.grpc.stub.StreamObserver<Server1Proto.Fun1Reply> responseObserver) {
       asyncUnimplementedUnaryCall(getFun1Method(), responseObserver);
     }
 
-    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
+    @Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
             getFun1Method(),
             asyncUnaryCall(
               new MethodHandlers<
-                xin.qust.platform.grpc.proto.Server1Proto.Fun1Request,
-                xin.qust.platform.grpc.proto.Server1Proto.Fun1Reply>(
+                Server1Proto.Fun1Request,
+                Server1Proto.Fun1Reply>(
                   this, METHODID_FUN1)))
           .build();
     }
@@ -130,7 +122,7 @@ public final class Server1Grpc {
       super(channel, callOptions);
     }
 
-    @java.lang.Override
+    @Override
     protected Server1Stub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       return new Server1Stub(channel, callOptions);
@@ -141,8 +133,8 @@ public final class Server1Grpc {
      *服务端接口方法
      * </pre>
      */
-    public void fun1(xin.qust.platform.grpc.proto.Server1Proto.Fun1Request request,
-        io.grpc.stub.StreamObserver<xin.qust.platform.grpc.proto.Server1Proto.Fun1Reply> responseObserver) {
+    public void fun1(Server1Proto.Fun1Request request,
+                     io.grpc.stub.StreamObserver<Server1Proto.Fun1Reply> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getFun1Method(), getCallOptions()), request, responseObserver);
     }
@@ -163,7 +155,7 @@ public final class Server1Grpc {
       super(channel, callOptions);
     }
 
-    @java.lang.Override
+    @Override
     protected Server1BlockingStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       return new Server1BlockingStub(channel, callOptions);
@@ -174,7 +166,7 @@ public final class Server1Grpc {
      *服务端接口方法
      * </pre>
      */
-    public xin.qust.platform.grpc.proto.Server1Proto.Fun1Reply fun1(xin.qust.platform.grpc.proto.Server1Proto.Fun1Request request) {
+    public Server1Proto.Fun1Reply fun1(Server1Proto.Fun1Request request) {
       return blockingUnaryCall(
           getChannel(), getFun1Method(), getCallOptions(), request);
     }
@@ -195,7 +187,7 @@ public final class Server1Grpc {
       super(channel, callOptions);
     }
 
-    @java.lang.Override
+    @Override
     protected Server1FutureStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       return new Server1FutureStub(channel, callOptions);
@@ -206,8 +198,8 @@ public final class Server1Grpc {
      *服务端接口方法
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<xin.qust.platform.grpc.proto.Server1Proto.Fun1Reply> fun1(
-        xin.qust.platform.grpc.proto.Server1Proto.Fun1Request request) {
+    public com.google.common.util.concurrent.ListenableFuture<Server1Proto.Fun1Reply> fun1(
+        Server1Proto.Fun1Request request) {
       return futureUnaryCall(
           getChannel().newCall(getFun1Method(), getCallOptions()), request);
     }
@@ -228,21 +220,21 @@ public final class Server1Grpc {
       this.methodId = methodId;
     }
 
-    @java.lang.Override
-    @java.lang.SuppressWarnings("unchecked")
+    @Override
+    @SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_FUN1:
-          serviceImpl.fun1((xin.qust.platform.grpc.proto.Server1Proto.Fun1Request) request,
-              (io.grpc.stub.StreamObserver<xin.qust.platform.grpc.proto.Server1Proto.Fun1Reply>) responseObserver);
+          serviceImpl.fun1((Server1Proto.Fun1Request) request,
+              (io.grpc.stub.StreamObserver<Server1Proto.Fun1Reply>) responseObserver);
           break;
         default:
           throw new AssertionError();
       }
     }
 
-    @java.lang.Override
-    @java.lang.SuppressWarnings("unchecked")
+    @Override
+    @SuppressWarnings("unchecked")
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
@@ -256,12 +248,12 @@ public final class Server1Grpc {
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
     Server1BaseDescriptorSupplier() {}
 
-    @java.lang.Override
+    @Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return xin.qust.platform.grpc.proto.Server1Proto.getDescriptor();
+      return Server1Proto.getDescriptor();
     }
 
-    @java.lang.Override
+    @Override
     public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
       return getFileDescriptor().findServiceByName("Server1");
     }
@@ -281,7 +273,7 @@ public final class Server1Grpc {
       this.methodName = methodName;
     }
 
-    @java.lang.Override
+    @Override
     public com.google.protobuf.Descriptors.MethodDescriptor getMethodDescriptor() {
       return getServiceDescriptor().findMethodByName(methodName);
     }

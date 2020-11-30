@@ -1,18 +1,10 @@
 package xin.qust.platform.grpc.proto;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
-import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
-import static io.grpc.stub.ClientCalls.asyncClientStreamingCall;
-import static io.grpc.stub.ClientCalls.asyncServerStreamingCall;
 import static io.grpc.stub.ClientCalls.asyncUnaryCall;
-import static io.grpc.stub.ClientCalls.blockingServerStreamingCall;
 import static io.grpc.stub.ClientCalls.blockingUnaryCall;
 import static io.grpc.stub.ClientCalls.futureUnaryCall;
-import static io.grpc.stub.ServerCalls.asyncBidiStreamingCall;
-import static io.grpc.stub.ServerCalls.asyncClientStreamingCall;
-import static io.grpc.stub.ServerCalls.asyncServerStreamingCall;
 import static io.grpc.stub.ServerCalls.asyncUnaryCall;
-import static io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall;
 import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 
 /**
@@ -30,30 +22,30 @@ public final class taskcrawlerGrpc {
   public static final String SERVICE_NAME = "proto.taskcrawler";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<xin.qust.platform.grpc.proto.TaskCrawlerProto.Crawler1Request,
-      xin.qust.platform.grpc.proto.TaskCrawlerProto.Crawler1Reply> getCrawler1Method;
+  private static volatile io.grpc.MethodDescriptor<TaskCrawlerProto.Crawler1Request,
+      TaskCrawlerProto.Crawler1Reply> getCrawler1Method;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "crawler1",
-      requestType = xin.qust.platform.grpc.proto.TaskCrawlerProto.Crawler1Request.class,
-      responseType = xin.qust.platform.grpc.proto.TaskCrawlerProto.Crawler1Reply.class,
+      requestType = TaskCrawlerProto.Crawler1Request.class,
+      responseType = TaskCrawlerProto.Crawler1Reply.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<xin.qust.platform.grpc.proto.TaskCrawlerProto.Crawler1Request,
-      xin.qust.platform.grpc.proto.TaskCrawlerProto.Crawler1Reply> getCrawler1Method() {
-    io.grpc.MethodDescriptor<xin.qust.platform.grpc.proto.TaskCrawlerProto.Crawler1Request, xin.qust.platform.grpc.proto.TaskCrawlerProto.Crawler1Reply> getCrawler1Method;
+  public static io.grpc.MethodDescriptor<TaskCrawlerProto.Crawler1Request,
+      TaskCrawlerProto.Crawler1Reply> getCrawler1Method() {
+    io.grpc.MethodDescriptor<TaskCrawlerProto.Crawler1Request, TaskCrawlerProto.Crawler1Reply> getCrawler1Method;
     if ((getCrawler1Method = taskcrawlerGrpc.getCrawler1Method) == null) {
       synchronized (taskcrawlerGrpc.class) {
         if ((getCrawler1Method = taskcrawlerGrpc.getCrawler1Method) == null) {
           taskcrawlerGrpc.getCrawler1Method = getCrawler1Method = 
-              io.grpc.MethodDescriptor.<xin.qust.platform.grpc.proto.TaskCrawlerProto.Crawler1Request, xin.qust.platform.grpc.proto.TaskCrawlerProto.Crawler1Reply>newBuilder()
+              io.grpc.MethodDescriptor.<TaskCrawlerProto.Crawler1Request, TaskCrawlerProto.Crawler1Reply>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "proto.taskcrawler", "crawler1"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  xin.qust.platform.grpc.proto.TaskCrawlerProto.Crawler1Request.getDefaultInstance()))
+                  TaskCrawlerProto.Crawler1Request.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  xin.qust.platform.grpc.proto.TaskCrawlerProto.Crawler1Reply.getDefaultInstance()))
+                  TaskCrawlerProto.Crawler1Reply.getDefaultInstance()))
                   .setSchemaDescriptor(new taskcrawlerMethodDescriptorSupplier("crawler1"))
                   .build();
           }
@@ -97,19 +89,19 @@ public final class taskcrawlerGrpc {
      *服务端接口方法
      * </pre>
      */
-    public void crawler1(xin.qust.platform.grpc.proto.TaskCrawlerProto.Crawler1Request request,
-        io.grpc.stub.StreamObserver<xin.qust.platform.grpc.proto.TaskCrawlerProto.Crawler1Reply> responseObserver) {
+    public void crawler1(TaskCrawlerProto.Crawler1Request request,
+                         io.grpc.stub.StreamObserver<TaskCrawlerProto.Crawler1Reply> responseObserver) {
       asyncUnimplementedUnaryCall(getCrawler1Method(), responseObserver);
     }
 
-    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
+    @Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
             getCrawler1Method(),
             asyncUnaryCall(
               new MethodHandlers<
-                xin.qust.platform.grpc.proto.TaskCrawlerProto.Crawler1Request,
-                xin.qust.platform.grpc.proto.TaskCrawlerProto.Crawler1Reply>(
+                TaskCrawlerProto.Crawler1Request,
+                TaskCrawlerProto.Crawler1Reply>(
                   this, METHODID_CRAWLER1)))
           .build();
     }
@@ -130,7 +122,7 @@ public final class taskcrawlerGrpc {
       super(channel, callOptions);
     }
 
-    @java.lang.Override
+    @Override
     protected taskcrawlerStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       return new taskcrawlerStub(channel, callOptions);
@@ -141,8 +133,8 @@ public final class taskcrawlerGrpc {
      *服务端接口方法
      * </pre>
      */
-    public void crawler1(xin.qust.platform.grpc.proto.TaskCrawlerProto.Crawler1Request request,
-        io.grpc.stub.StreamObserver<xin.qust.platform.grpc.proto.TaskCrawlerProto.Crawler1Reply> responseObserver) {
+    public void crawler1(TaskCrawlerProto.Crawler1Request request,
+                         io.grpc.stub.StreamObserver<TaskCrawlerProto.Crawler1Reply> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getCrawler1Method(), getCallOptions()), request, responseObserver);
     }
@@ -163,7 +155,7 @@ public final class taskcrawlerGrpc {
       super(channel, callOptions);
     }
 
-    @java.lang.Override
+    @Override
     protected taskcrawlerBlockingStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       return new taskcrawlerBlockingStub(channel, callOptions);
@@ -174,7 +166,7 @@ public final class taskcrawlerGrpc {
      *服务端接口方法
      * </pre>
      */
-    public xin.qust.platform.grpc.proto.TaskCrawlerProto.Crawler1Reply crawler1(xin.qust.platform.grpc.proto.TaskCrawlerProto.Crawler1Request request) {
+    public TaskCrawlerProto.Crawler1Reply crawler1(TaskCrawlerProto.Crawler1Request request) {
       return blockingUnaryCall(
           getChannel(), getCrawler1Method(), getCallOptions(), request);
     }
@@ -195,7 +187,7 @@ public final class taskcrawlerGrpc {
       super(channel, callOptions);
     }
 
-    @java.lang.Override
+    @Override
     protected taskcrawlerFutureStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       return new taskcrawlerFutureStub(channel, callOptions);
@@ -206,8 +198,8 @@ public final class taskcrawlerGrpc {
      *服务端接口方法
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<xin.qust.platform.grpc.proto.TaskCrawlerProto.Crawler1Reply> crawler1(
-        xin.qust.platform.grpc.proto.TaskCrawlerProto.Crawler1Request request) {
+    public com.google.common.util.concurrent.ListenableFuture<TaskCrawlerProto.Crawler1Reply> crawler1(
+        TaskCrawlerProto.Crawler1Request request) {
       return futureUnaryCall(
           getChannel().newCall(getCrawler1Method(), getCallOptions()), request);
     }
@@ -228,21 +220,21 @@ public final class taskcrawlerGrpc {
       this.methodId = methodId;
     }
 
-    @java.lang.Override
-    @java.lang.SuppressWarnings("unchecked")
+    @Override
+    @SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_CRAWLER1:
-          serviceImpl.crawler1((xin.qust.platform.grpc.proto.TaskCrawlerProto.Crawler1Request) request,
-              (io.grpc.stub.StreamObserver<xin.qust.platform.grpc.proto.TaskCrawlerProto.Crawler1Reply>) responseObserver);
+          serviceImpl.crawler1((TaskCrawlerProto.Crawler1Request) request,
+              (io.grpc.stub.StreamObserver<TaskCrawlerProto.Crawler1Reply>) responseObserver);
           break;
         default:
           throw new AssertionError();
       }
     }
 
-    @java.lang.Override
-    @java.lang.SuppressWarnings("unchecked")
+    @Override
+    @SuppressWarnings("unchecked")
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
@@ -256,12 +248,12 @@ public final class taskcrawlerGrpc {
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
     taskcrawlerBaseDescriptorSupplier() {}
 
-    @java.lang.Override
+    @Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return xin.qust.platform.grpc.proto.TaskCrawlerProto.getDescriptor();
+      return TaskCrawlerProto.getDescriptor();
     }
 
-    @java.lang.Override
+    @Override
     public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
       return getFileDescriptor().findServiceByName("taskcrawler");
     }
@@ -281,7 +273,7 @@ public final class taskcrawlerGrpc {
       this.methodName = methodName;
     }
 
-    @java.lang.Override
+    @Override
     public com.google.protobuf.Descriptors.MethodDescriptor getMethodDescriptor() {
       return getServiceDescriptor().findMethodByName(methodName);
     }

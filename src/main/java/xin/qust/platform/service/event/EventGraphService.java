@@ -34,6 +34,9 @@ public class EventGraphService {
     @Autowired
     private EventAccidentReportRepo eventAccidentReportRepo;
 
+    @Autowired
+    private EventNodeBiaozhuPairRepo eventNodeBiaozhuPairRepo;
+
     //对象转Map
     public static Map<String, Object> getObjectToMap(Object obj) throws IllegalAccessException {
         Map<String, Object> map = new LinkedHashMap<String, Object>();
@@ -187,5 +190,27 @@ public class EventGraphService {
             message.setResponseCode(ResponseCode.SPECIFIED_QUESTIONED_USER_NOT_EXIST);
             return  message;
         }
+    }
+
+//    概念图（标准图）上的节点标注，标注一段文字
+    public void addEventNodeBiaozhuPair(Long nodeid,String node, String biaozhutext){
+        EventNodeBiaozhuPair pair = new EventNodeBiaozhuPair();
+        pair.setBiaozhutext(biaozhutext);
+        pair.setNode(node);
+        pair.setNodeid(nodeid);
+        eventNodeBiaozhuPairRepo.save(pair);
+    }
+
+//    通过nodeid获得标注记录
+    public List<EventNodeBiaozhuPair> findEventNodeBiaozhuPairbyNodeid(Long nodeid) {
+        return eventNodeBiaozhuPairRepo.findByNodeid(nodeid);
+    }
+
+    public Object findAllEventNodeBiaozhuPair(Pageable pageable) {
+        return eventNodeBiaozhuPairRepo.findAll(pageable);
+    }
+
+    public void deleteNodeBiaozhuPairById(Long id) {
+        eventNodeBiaozhuPairRepo.deleteById(id);
     }
 }

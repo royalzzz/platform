@@ -2,11 +2,10 @@ package xin.qust.platform.service.sysconf;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import xin.qust.platform.domain.SystemConfig;
+import xin.qust.platform.domain.system.SystemConfig;
 import xin.qust.platform.repository.sysconf.SystemConfigRepo;
 import xin.qust.platform.utils.Parser;
 
-import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;

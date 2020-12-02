@@ -9,10 +9,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.SchedulingConfigurer;
 import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 import org.springframework.scheduling.support.CronTrigger;
-import xin.qust.platform.domain.SystemConfig;
+import xin.qust.platform.domain.system.SystemConfig;
 import xin.qust.platform.service.sysconf.SystemConfigService;
 
-import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Configuration
@@ -36,6 +35,7 @@ public class CrawlerTask implements SchedulingConfigurer {
                     if (op.isPresent()){
                         SystemConfig systemConfig = op.get();
                         String cron = systemConfig.getYuqing_crawler_time_split();
+                        System.out.println(cron);
                         //2.2 合法性校验.
                         if (StringUtils.isEmpty(cron)) {
                             // Omitted Code ..

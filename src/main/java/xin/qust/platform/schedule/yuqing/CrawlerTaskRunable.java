@@ -15,9 +15,7 @@ import java.util.concurrent.TimeUnit;
 
 public class CrawlerTaskRunable {
 
-
-
-    public void taskCrawler() throws Exception{
+    public void crawlerStart() throws Exception{
         ManagedChannel channel = ChannelFactory.createGrpcChannel();
         taskcrawlerGrpc.taskcrawlerBlockingStub stub = taskcrawlerGrpc.newBlockingStub(channel);
 
@@ -30,15 +28,15 @@ public class CrawlerTaskRunable {
 
     public static void runCrawler(){
         Logger logger = LoggerFactory.getLogger(CrawlerTaskRunable.class);
-        new Thread(new Runnable(){//调用Runnable接口
-            public void run(){
-                LogBucket.startListen();
-            }
-        }).start();
+//        new Thread(new Runnable(){//调用Runnable接口
+//            public void run(){
+//                LogBucket.startListen();
+//            }
+//        }).start();
 
         try {
-            ClientTest t = new ClientTest();
-//            t.taskCrawler();
+            CrawlerTaskRunable crawlerTask = new CrawlerTaskRunable();
+            crawlerTask.crawlerStart();
             logger.info(LocalDateTime.now().toLocalTime() + "：执行爬虫...");
         } catch (Exception e) {
             e.printStackTrace();

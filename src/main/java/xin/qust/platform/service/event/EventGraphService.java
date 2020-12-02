@@ -6,10 +6,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import xin.qust.platform.domain.*;
+import xin.qust.platform.domain.event.*;
 import xin.qust.platform.model.Message;
 import xin.qust.platform.model.constant.ResponseCode;
-import xin.qust.platform.model.vo.PageVo;
 import xin.qust.platform.nlp.WordSplit;
 import xin.qust.platform.repository.event.*;
 

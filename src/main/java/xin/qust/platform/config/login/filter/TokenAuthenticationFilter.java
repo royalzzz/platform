@@ -49,6 +49,7 @@ public class TokenAuthenticationFilter extends BasicAuthenticationFilter {
             UsernamePasswordAuthenticationToken authentication = getAuthentication(token);
             if (authentication != null) {
                 SecurityContextHolder.getContext().setAuthentication(authentication);
+                chain.doFilter(request, response);
             }
         }
         catch (Exception e) {
@@ -61,7 +62,6 @@ public class TokenAuthenticationFilter extends BasicAuthenticationFilter {
             writer.write(message.toJsonString());
             chain.doFilter(request, response);
         }
-        chain.doFilter(request, response);
     }
 
     private UsernamePasswordAuthenticationToken getAuthentication(String token) {

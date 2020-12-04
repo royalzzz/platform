@@ -9,10 +9,15 @@
         "chemical_id": {
             "type": "long"
         },
-        "name": {
+        "smart_name": {
             "type": "text",
-            "index": true,
-            "analyzer":"standard"
+            "analyzer":"ik_smart",
+            "index_options": "docs"
+        },
+        "standard_name": {
+            "type": "text",
+            "analyzer":"standard",
+            "index_options": "docs"
         }
     }
 }

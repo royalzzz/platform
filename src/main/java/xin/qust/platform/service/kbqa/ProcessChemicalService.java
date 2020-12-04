@@ -22,7 +22,7 @@ public class ProcessChemicalService {
     private ElasticService elasticService;
 
     public void importSDS(String indexName) {
-        logger.info("import SDS");
+        logger.info("import sds");
         List<KbqaSdsChemical> chemicals = kbqaSdsChemicalRepo.findAll();
         List<Map<String, Object>> sources = new ArrayList<>();
 
@@ -42,7 +42,8 @@ public class ProcessChemicalService {
 
             for (String name: names) {
                 Map<String, Object> jsonSource = new HashMap<>();
-                jsonSource.put("name", name);
+                jsonSource.put("smart_name", name);
+                jsonSource.put("standard_name", name);
                 jsonSource.put("chemical_id", chemical.getId());
                 sources.add(jsonSource);
             }

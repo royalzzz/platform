@@ -1,18 +1,10 @@
 package xin.qust.platform.grpc.proto;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
-import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
-import static io.grpc.stub.ClientCalls.asyncClientStreamingCall;
-import static io.grpc.stub.ClientCalls.asyncServerStreamingCall;
 import static io.grpc.stub.ClientCalls.asyncUnaryCall;
-import static io.grpc.stub.ClientCalls.blockingServerStreamingCall;
 import static io.grpc.stub.ClientCalls.blockingUnaryCall;
 import static io.grpc.stub.ClientCalls.futureUnaryCall;
-import static io.grpc.stub.ServerCalls.asyncBidiStreamingCall;
-import static io.grpc.stub.ServerCalls.asyncClientStreamingCall;
-import static io.grpc.stub.ServerCalls.asyncServerStreamingCall;
 import static io.grpc.stub.ServerCalls.asyncUnaryCall;
-import static io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall;
 import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 
 /**
@@ -30,30 +22,30 @@ public final class Server2Grpc {
   public static final String SERVICE_NAME = "proto.Server2";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<xin.qust.platform.grpc.proto.Server2Proto.Fun2Request,
-      xin.qust.platform.grpc.proto.Server2Proto.Fun2Reply> getFun2Method;
+  private static volatile io.grpc.MethodDescriptor<Server2Proto.Fun2Request,
+      Server2Proto.Fun2Reply> getFun2Method;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "fun2",
-      requestType = xin.qust.platform.grpc.proto.Server2Proto.Fun2Request.class,
-      responseType = xin.qust.platform.grpc.proto.Server2Proto.Fun2Reply.class,
+      requestType = Server2Proto.Fun2Request.class,
+      responseType = Server2Proto.Fun2Reply.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<xin.qust.platform.grpc.proto.Server2Proto.Fun2Request,
-      xin.qust.platform.grpc.proto.Server2Proto.Fun2Reply> getFun2Method() {
-    io.grpc.MethodDescriptor<xin.qust.platform.grpc.proto.Server2Proto.Fun2Request, xin.qust.platform.grpc.proto.Server2Proto.Fun2Reply> getFun2Method;
+  public static io.grpc.MethodDescriptor<Server2Proto.Fun2Request,
+      Server2Proto.Fun2Reply> getFun2Method() {
+    io.grpc.MethodDescriptor<Server2Proto.Fun2Request, Server2Proto.Fun2Reply> getFun2Method;
     if ((getFun2Method = Server2Grpc.getFun2Method) == null) {
       synchronized (Server2Grpc.class) {
         if ((getFun2Method = Server2Grpc.getFun2Method) == null) {
           Server2Grpc.getFun2Method = getFun2Method = 
-              io.grpc.MethodDescriptor.<xin.qust.platform.grpc.proto.Server2Proto.Fun2Request, xin.qust.platform.grpc.proto.Server2Proto.Fun2Reply>newBuilder()
+              io.grpc.MethodDescriptor.<Server2Proto.Fun2Request, Server2Proto.Fun2Reply>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "proto.Server2", "fun2"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  xin.qust.platform.grpc.proto.Server2Proto.Fun2Request.getDefaultInstance()))
+                  Server2Proto.Fun2Request.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  xin.qust.platform.grpc.proto.Server2Proto.Fun2Reply.getDefaultInstance()))
+                  Server2Proto.Fun2Reply.getDefaultInstance()))
                   .setSchemaDescriptor(new Server2MethodDescriptorSupplier("fun2"))
                   .build();
           }
@@ -97,19 +89,19 @@ public final class Server2Grpc {
      *服务端接口方法
      * </pre>
      */
-    public void fun2(xin.qust.platform.grpc.proto.Server2Proto.Fun2Request request,
-        io.grpc.stub.StreamObserver<xin.qust.platform.grpc.proto.Server2Proto.Fun2Reply> responseObserver) {
+    public void fun2(Server2Proto.Fun2Request request,
+                     io.grpc.stub.StreamObserver<Server2Proto.Fun2Reply> responseObserver) {
       asyncUnimplementedUnaryCall(getFun2Method(), responseObserver);
     }
 
-    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
+    @Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
             getFun2Method(),
             asyncUnaryCall(
               new MethodHandlers<
-                xin.qust.platform.grpc.proto.Server2Proto.Fun2Request,
-                xin.qust.platform.grpc.proto.Server2Proto.Fun2Reply>(
+                Server2Proto.Fun2Request,
+                Server2Proto.Fun2Reply>(
                   this, METHODID_FUN2)))
           .build();
     }
@@ -130,7 +122,7 @@ public final class Server2Grpc {
       super(channel, callOptions);
     }
 
-    @java.lang.Override
+    @Override
     protected Server2Stub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       return new Server2Stub(channel, callOptions);
@@ -141,8 +133,8 @@ public final class Server2Grpc {
      *服务端接口方法
      * </pre>
      */
-    public void fun2(xin.qust.platform.grpc.proto.Server2Proto.Fun2Request request,
-        io.grpc.stub.StreamObserver<xin.qust.platform.grpc.proto.Server2Proto.Fun2Reply> responseObserver) {
+    public void fun2(Server2Proto.Fun2Request request,
+                     io.grpc.stub.StreamObserver<Server2Proto.Fun2Reply> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getFun2Method(), getCallOptions()), request, responseObserver);
     }
@@ -163,7 +155,7 @@ public final class Server2Grpc {
       super(channel, callOptions);
     }
 
-    @java.lang.Override
+    @Override
     protected Server2BlockingStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       return new Server2BlockingStub(channel, callOptions);
@@ -174,7 +166,7 @@ public final class Server2Grpc {
      *服务端接口方法
      * </pre>
      */
-    public xin.qust.platform.grpc.proto.Server2Proto.Fun2Reply fun2(xin.qust.platform.grpc.proto.Server2Proto.Fun2Request request) {
+    public Server2Proto.Fun2Reply fun2(Server2Proto.Fun2Request request) {
       return blockingUnaryCall(
           getChannel(), getFun2Method(), getCallOptions(), request);
     }
@@ -195,7 +187,7 @@ public final class Server2Grpc {
       super(channel, callOptions);
     }
 
-    @java.lang.Override
+    @Override
     protected Server2FutureStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       return new Server2FutureStub(channel, callOptions);
@@ -206,8 +198,8 @@ public final class Server2Grpc {
      *服务端接口方法
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<xin.qust.platform.grpc.proto.Server2Proto.Fun2Reply> fun2(
-        xin.qust.platform.grpc.proto.Server2Proto.Fun2Request request) {
+    public com.google.common.util.concurrent.ListenableFuture<Server2Proto.Fun2Reply> fun2(
+        Server2Proto.Fun2Request request) {
       return futureUnaryCall(
           getChannel().newCall(getFun2Method(), getCallOptions()), request);
     }
@@ -228,21 +220,21 @@ public final class Server2Grpc {
       this.methodId = methodId;
     }
 
-    @java.lang.Override
-    @java.lang.SuppressWarnings("unchecked")
+    @Override
+    @SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_FUN2:
-          serviceImpl.fun2((xin.qust.platform.grpc.proto.Server2Proto.Fun2Request) request,
-              (io.grpc.stub.StreamObserver<xin.qust.platform.grpc.proto.Server2Proto.Fun2Reply>) responseObserver);
+          serviceImpl.fun2((Server2Proto.Fun2Request) request,
+              (io.grpc.stub.StreamObserver<Server2Proto.Fun2Reply>) responseObserver);
           break;
         default:
           throw new AssertionError();
       }
     }
 
-    @java.lang.Override
-    @java.lang.SuppressWarnings("unchecked")
+    @Override
+    @SuppressWarnings("unchecked")
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
@@ -256,12 +248,12 @@ public final class Server2Grpc {
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
     Server2BaseDescriptorSupplier() {}
 
-    @java.lang.Override
+    @Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return xin.qust.platform.grpc.proto.Server2Proto.getDescriptor();
+      return Server2Proto.getDescriptor();
     }
 
-    @java.lang.Override
+    @Override
     public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
       return getFileDescriptor().findServiceByName("Server2");
     }
@@ -281,7 +273,7 @@ public final class Server2Grpc {
       this.methodName = methodName;
     }
 
-    @java.lang.Override
+    @Override
     public com.google.protobuf.Descriptors.MethodDescriptor getMethodDescriptor() {
       return getServiceDescriptor().findMethodByName(methodName);
     }

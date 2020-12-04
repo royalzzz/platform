@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 public class LogBucket {
 
-	private static final int port = 5002;
+	private static final int port = 5005;
 	private static HashMap<String, LogHandler> maps = new HashMap<String, LogHandler>();
 
 	public static void startListen() {

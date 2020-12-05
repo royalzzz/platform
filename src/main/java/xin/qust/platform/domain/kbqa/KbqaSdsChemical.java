@@ -1,4 +1,4 @@
-package xin.qust.platform.domain;
+package xin.qust.platform.domain.kbqa;
 
 import javax.persistence.*;
 

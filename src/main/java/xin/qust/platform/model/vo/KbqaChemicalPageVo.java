@@ -5,9 +5,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
-public class ChemicalPageVo extends PageVo{
+public class KbqaChemicalPageVo extends PageVo{
 
-    ChemicalPageVo(int pageNumber, int pageSize) {
+    KbqaChemicalPageVo(int pageNumber, int pageSize) {
         super(pageNumber, pageSize);
     }
 }

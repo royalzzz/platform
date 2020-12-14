@@ -3,7 +3,7 @@ package xin.qust.platform.service.common;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import xin.qust.platform.domain.*;
+import xin.qust.platform.domain.user.*;
 import xin.qust.platform.repository.user.*;
 
 import java.text.SimpleDateFormat;

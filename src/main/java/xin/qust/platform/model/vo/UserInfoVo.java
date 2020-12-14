@@ -1,7 +1,7 @@
 package xin.qust.platform.model.vo;
 
-import xin.qust.platform.domain.UserBasicInfo;
-import xin.qust.platform.domain.UserRole;
+import xin.qust.platform.domain.user.UserBasicInfo;
+import xin.qust.platform.domain.user.UserRole;
 
 import java.util.ArrayList;
 import java.util.List;

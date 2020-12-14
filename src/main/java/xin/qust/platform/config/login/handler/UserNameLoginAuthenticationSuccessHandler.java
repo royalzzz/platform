@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import xin.qust.platform.config.login.plugins.jwt.TokenManager;
-import xin.qust.platform.domain.UserNameLogin;
+import xin.qust.platform.domain.user.UserNameLogin;
 import xin.qust.platform.model.Message;
 import xin.qust.platform.model.constant.ResponseCode;
 

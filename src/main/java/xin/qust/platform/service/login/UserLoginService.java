@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import xin.qust.platform.domain.UserNameLogin;
+import xin.qust.platform.domain.user.UserNameLogin;
 import xin.qust.platform.model.Message;
 import xin.qust.platform.model.constant.ResponseCode;
 import xin.qust.platform.repository.user.UserBasicInfoRepo;

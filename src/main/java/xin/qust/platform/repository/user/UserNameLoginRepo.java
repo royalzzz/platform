@@ -1,7 +1,7 @@
 package xin.qust.platform.repository.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import xin.qust.platform.domain.UserNameLogin;
+import xin.qust.platform.domain.user.UserNameLogin;
 
 import java.util.Optional;
 

@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package proto;
+option java_package = "com.q49a.grpc.w2m.proto";
+option java_outer_classname = "TaskYuqingClaProto";
+option java_multiple_files = false;
+
+//服务端接口类
+service TaskYuqingCla {
+  //服务端接口方法
+  rpc yuqingCla(TaskYuqingClaRequest) returns (TaskYuqingClaReply) {}
+}
+
+//请求参数
+message TaskYuqingClaRequest {
+  //taskId 字段是我们自己定义的 一定要有
+  string taskId = 1;
+  int64 id = 2;
+  string content = 3;
+}
+
+//响应参数
+message TaskYuqingClaReply {
+  string message = 1;
+}

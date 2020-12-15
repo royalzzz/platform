@@ -43,7 +43,7 @@ public class YuqingOriginnewsService {
         return yuqingOriginnewsRepo.save(news);
     }
     private List<YuqingOriginnews> getYuqingOriginnewsWithoutCla() {
-        return yuqingOriginnewsRepo.findByClasetIsNotNull();
+        return yuqingOriginnewsRepo.findByClasetIsNull();
     }
     public int chargeClass() {
 //        new Thread(new Runnable(){//调用Runnable接口
@@ -58,7 +58,7 @@ public class YuqingOriginnewsService {
             String content = yuqingOriginnewsList.get(i).getNews_title() + yuqingOriginnewsList.get(i).getNews_content();
             try {
                 this.chargeStart(id, content);
-                logger.info(LocalDateTime.now().toLocalTime() + "：执行原始新闻分类...");
+//                logger.info(LocalDateTime.now().toLocalTime() + "：执行原始新闻分类...");
             } catch (Exception e) {
                 e.printStackTrace();
             }

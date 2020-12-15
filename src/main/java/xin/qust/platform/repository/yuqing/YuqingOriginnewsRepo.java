@@ -14,4 +14,6 @@ public interface YuqingOriginnewsRepo extends JpaRepository<YuqingOriginnews, Lo
     Page<YuqingOriginnews> findByClasetIsNotNull(Pageable pageable);
 
     List<YuqingOriginnews> findByClasetIsNotNull();
+
+    List<YuqingOriginnews> findByClasetIsNull();
 }

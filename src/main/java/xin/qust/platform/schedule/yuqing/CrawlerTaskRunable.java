@@ -16,13 +16,14 @@ import java.util.concurrent.TimeUnit;
 public class CrawlerTaskRunable {
 
     public void crawlerStart() throws Exception{
+        Logger logger = LoggerFactory.getLogger(CrawlerTaskRunable.class);
         ManagedChannel channel = ChannelFactory.createGrpcChannel();
         taskcrawlerGrpc.taskcrawlerBlockingStub stub = taskcrawlerGrpc.newBlockingStub(channel);
 
         String taskId = UUID.randomUUID().toString();
         TaskCrawlerProto.Crawler1Request request = TaskCrawlerProto.Crawler1Request.newBuilder().setTaskId(taskId).setKeywords("['化工爆炸', '化工泄露', '化工中毒', '化工火灾']").build();
         TaskCrawlerProto.Crawler1Reply reply = stub.crawler1(request);
-        System.out.println(reply.getMessage());
+        logger.info(reply.getMessage());
         channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
     }
 

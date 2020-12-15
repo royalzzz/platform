@@ -1,6 +1,9 @@
 package xin.qust.platform.domain.yuqing;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "yuqing_originnews")
@@ -19,6 +22,10 @@ public class YuqingOriginnews {
     private String origin_weibo;
     private String news_content;
     private String exception;
+
+    @ManyToMany(targetEntity = NewsCla.class, fetch = FetchType.EAGER)
+    @JoinTable(name = "yuqing_news_has_cla", joinColumns = @JoinColumn(name = "news_id"), inverseJoinColumns = @JoinColumn(name = "claid"))
+    private Set<NewsCla> claset;
 
     public Long getId() {
         return id;
@@ -114,5 +121,13 @@ public class YuqingOriginnews {
 
     public void setException(String exception) {
         this.exception = exception;
+    }
+
+    public Set<NewsCla> getClaset() {
+        return claset;
+    }
+
+    public void setClaset(Set<NewsCla> claset) {
+        this.claset = claset;
     }
 }

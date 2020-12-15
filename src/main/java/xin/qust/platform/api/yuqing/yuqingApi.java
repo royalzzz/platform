@@ -45,7 +45,8 @@ public class yuqingApi {
             int seconds = df.parse(s_date).getSeconds();
 
             Map<String,Object> params = new HashMap<>();
-            String cornStr = seconds+" "+minutes+" "+hours+"/"+s_time+" "+day+" "+month+" ?";
+//            String cornStr = seconds+" "+minutes+" "+hours+"/"+s_time+" "+day+" "+month+" ?";
+            String cornStr = seconds+" "+minutes+" 0/"+s_time+" * * ?";
             System.out.println(cornStr);
             params.put("yuqing_crawler_time_split",cornStr);
             params.put("yuqing_crawler_start_time",s_date);
@@ -71,4 +72,49 @@ public class yuqingApi {
             return message;
         }
     }
+    @RequestMapping("getYuqingOriginnewsWithoutClaPageable")
+    public Message getYuqingOriginnewsWithoutClaPageable(@RequestBody PageVo pageVo) {
+        Message message = new Message();
+        try {
+            message.setResponseCode(ResponseCode.SUCCESS).setData(yuqingOriginnewsService.getYuqingOriginnewsWithoutClaPageable(pageVo));
+            return message;
+        }catch (Exception e){
+            message.setResponseCode(ResponseCode.SUCCESS).setData(e.getMessage());
+            return message;
+        }
+    }
+    @RequestMapping("getYuqingOriginnewsWithClaPageable")
+    public Message getYuqingOriginnewsWithClaPageable(@RequestBody PageVo pageVo) {
+        Message message = new Message();
+        try {
+            message.setResponseCode(ResponseCode.SUCCESS).setData(yuqingOriginnewsService.getYuqingOriginnewsWithClaPageable(pageVo));
+            return message;
+        }catch (Exception e){
+            message.setResponseCode(ResponseCode.SUCCESS).setData(e.getMessage());
+            return message;
+        }
+    }
+    @RequestMapping("updateOriginNewsData")
+    public Message updateOriginNewsData(@RequestBody YuqingOriginnews news) {
+        Message message = new Message();
+        try {
+            message.setResponseCode(ResponseCode.SUCCESS).setData("已更新原始新闻，id："+yuqingOriginnewsService.updateOriginNews(news).getId());
+            return message;
+        }catch (Exception e){
+            message.setResponseCode(ResponseCode.SUCCESS).setData(e.getMessage());
+            return message;
+        }
+    }
+    @RequestMapping("chargeClass")
+    public Message chargeClass(){
+        Message message = new Message();
+        try {
+            message.setResponseCode(ResponseCode.SUCCESS).setData("已经将未分类的新闻进行分类"+yuqingOriginnewsService.chargeClass());
+            return message;
+        }catch (Exception e){
+            message.setResponseCode(ResponseCode.SUCCESS).setData(e.getMessage());
+            return message;
+        }
+    }
+
 }

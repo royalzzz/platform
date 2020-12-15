@@ -35,10 +35,10 @@ public class CrawlerTask implements SchedulingConfigurer {
                     if (op.isPresent()){
                         SystemConfig systemConfig = op.get();
                         String cron = systemConfig.getYuqing_crawler_time_split();
-                        System.out.println(cron);
+//                        cron = getRealCron(cron);
+                        logger.info("cron周期运行参数："+cron);
                         //2.2 合法性校验.
                         if (StringUtils.isEmpty(cron)) {
-                            // Omitted Code ..
                             logger.error("获取时间失败，舆情模块信息采集未启动");
                         }
                         //2.3 返回执行周期(Date)
@@ -47,7 +47,14 @@ public class CrawlerTask implements SchedulingConfigurer {
                     return null;
                 }
         );
-
-
+    }
+//    返回去掉日期的参数，可以每日都循环
+    public static String getRealCron(String cronWithDate){
+//        String str2 = "23 40 16/1 2 12 ? ";
+        String [] strArray = cronWithDate.split("\\s+");
+        String perHour = strArray[2].split("/")[1];
+        String second = cronWithDate.split("\\s+")[0];
+        String minute = cronWithDate.split("\\s+")[1];
+        return second+" "+minute+" 0/"+perHour+" * * ? ";
     }
 }

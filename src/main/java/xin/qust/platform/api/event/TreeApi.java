@@ -15,6 +15,7 @@ import xin.qust.platform.model.constant.ResponseCode;
 import xin.qust.platform.model.vo.PageVo;
 import xin.qust.platform.service.event.EventGraphService;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -52,8 +53,7 @@ public class TreeApi {
     }
 
     @RequestMapping("addBiaozhuPair")
-    public Message addBiaozhuPair(String anli,String biaozhun, Long source, Long sourceid) throws IllegalAccessException {
-//        System.out.println("进入后台" + anli + biaozhun);
+    public Message addBiaozhuPair(String anli,String biaozhun, Long source, Long sourceid) throws IllegalAccessException, ParseException {
         eventGraphService.addBiaozhuPair(anli, biaozhun, source, sourceid);
         Message message = new Message(ResponseCode.SUCCESS);
         message.setData("插入成功");

@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import xin.qust.platform.domain.event.*;
 import xin.qust.platform.model.Message;
@@ -14,6 +15,8 @@ import xin.qust.platform.repository.event.*;
 
 
 import java.lang.reflect.Field;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Service
@@ -103,12 +106,17 @@ public class EventGraphService {
         }
         return nodes;
     }
-    public void addBiaozhuPair(String anli,String biaozhun, Long source, Long sourceid){
+    public void addBiaozhuPair(String anli,String biaozhun, Long source, Long sourceid) throws ParseException {
+        String curruser =  SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date currtime = sdf.parse(sdf.format(new Date()));
         EventBiaozhuPair pair = new EventBiaozhuPair();
         pair.setAnli(anli);
         pair.setBiaozhun(biaozhun);
         pair.setSource(source);
         pair.setSourceid(sourceid);
+        pair.setAdduser(curruser);
+        pair.setAddtime(currtime);
         eventBiaozhuPairRepo.save(pair);
     }
 
@@ -192,11 +200,16 @@ public class EventGraphService {
     }
 
 //    概念图（标准图）上的节点标注，标注一段文字
-    public void addEventNodeBiaozhuPair(Long nodeid,String node, String biaozhutext){
+    public void addEventNodeBiaozhuPair(Long nodeid,String node, String biaozhutext) throws ParseException {
+        String curruser =  SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date currtime = sdf.parse(sdf.format(new Date()));
         EventNodeBiaozhuPair pair = new EventNodeBiaozhuPair();
         pair.setBiaozhutext(biaozhutext);
         pair.setNode(node);
         pair.setNodeid(nodeid);
+        pair.setAdduser(curruser);
+        pair.setAddtime(currtime);
         eventNodeBiaozhuPairRepo.save(pair);
     }
 

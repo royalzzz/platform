@@ -1,5 +1,6 @@
 package xin.qust.platform.domain.event;
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "event_biaozhu_pair")
@@ -15,6 +16,10 @@ public class EventBiaozhuPair {
     private Long source;
 
     private Long sourceid;
+
+    private String adduser;
+
+    private Date addtime;
 
     public Long getId() {
         return id;
@@ -55,4 +60,23 @@ public class EventBiaozhuPair {
         this.sourceid = sourceid;
     }
 
+    public Long getSource() {
+        return source;
+    }
+
+    public String getAdduser() {
+        return adduser;
+    }
+
+    public void setAdduser(String adduser) {
+        this.adduser = adduser;
+    }
+
+    public Date getAddtime() {
+        return addtime;
+    }
+
+    public void setAddtime(Date addtime) {
+        this.addtime = addtime;
+    }
 }

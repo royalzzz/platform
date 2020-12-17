@@ -1,6 +1,7 @@
 package xin.qust.platform.domain.event;
 
 import javax.persistence.*;
+import java.util.Date;
 
 //事理图谱-标准图标注
 @Entity
@@ -12,7 +13,8 @@ public class EventNodeBiaozhuPair {
     private String node;
     private Long nodeid;
     private String biaozhutext;
-
+    private String adduser;
+    private Date addtime;
     public Long getId() {
         return id;
     }
@@ -43,5 +45,21 @@ public class EventNodeBiaozhuPair {
 
     public void setBiaozhutext(String biaozhutext) {
         this.biaozhutext = biaozhutext;
+    }
+
+    public String getAdduser() {
+        return adduser;
+    }
+
+    public void setAdduser(String adduser) {
+        this.adduser = adduser;
+    }
+
+    public Date getAddtime() {
+        return addtime;
+    }
+
+    public void setAddtime(Date addtime) {
+        this.addtime = addtime;
     }
 }

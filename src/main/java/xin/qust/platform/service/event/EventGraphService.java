@@ -61,14 +61,14 @@ public class EventGraphService {
         List<EventEdge> eventEdges = eventEdgeRepo.findAll();
 
         ArrayList<Map> nodes = new ArrayList<>();
-        for(int i=0; i<eventNodes.size(); i ++){
-            Map<String, Object> nodeMap = getObjectToMap(eventNodes.get(i));
+        for (EventNode eventNode : eventNodes) {
+            Map<String, Object> nodeMap = getObjectToMap(eventNode);
             nodes.add(nodeMap);
         }
         ArrayList<Map> edges = new ArrayList<>();
-        for(int i=0; i<eventEdges.size(); i ++){
-            Map<String, Object> edgeMap = getObjectToMap(eventEdges.get(i));
-//            edgeMap.remove("id");
+        for (EventEdge eventEdge : eventEdges) {
+            Map<String, Object> edgeMap = getObjectToMap(eventEdge);
+//            System.out.println(edgeMap.toString());
             edges.add(edgeMap);
         }
         Map<String, List> data = new HashMap<>();

@@ -11,6 +11,7 @@ public class EventEdge {
 
     private Long fromNode;
     private Long toNode;
+    private int level;
 
     public Long getId() {
         return id;
@@ -34,5 +35,13 @@ public class EventEdge {
 
     public void setToNode(Long toNode) {
         this.toNode = toNode;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
     }
 }

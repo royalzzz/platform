@@ -11,11 +11,13 @@ import xin.qust.platform.domain.yuqing.YuqingOriginnews;
 import xin.qust.platform.grpc.proto.TaskYuqingClaGrpc;
 import xin.qust.platform.grpc.proto.TaskYuqingClaProto;
 import xin.qust.platform.grpc.proxy.ChannelFactory;
+import xin.qust.platform.model.vo.PageVo;
 import xin.qust.platform.repository.yuqing.NewsClaRepo;
 import xin.qust.platform.repository.yuqing.YuqingOriginnewsRepo;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
@@ -81,5 +83,8 @@ public class YuqingOriginnewsService {
     }
 
 
-
+    public Object getAllYuqingCommentsNumPageable(Pageable pageable) {
+        //        System.out.println(pageableNews.getContent());
+        return yuqingOriginnewsRepo.findAll(pageable);
+    }
 }

@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TimeZone;
 
+//舆情信息获取
 @RequestMapping("yuqing")
 @RestController
 public class yuqingApi {

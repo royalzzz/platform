@@ -22,7 +22,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .logout().logoutUrl("/logout")
                 .addLogoutHandler(loginMethodConfig.tokenLogoutHandler()).logoutSuccessHandler(new NotRedirectHandler())
-                .and().authorizeRequests().antMatchers("/loginByEmail", "/loginByUserName", "/user/test").permitAll()
+                .and().authorizeRequests().antMatchers("/loginByEmail", "/loginByUserName", "/user/test", "/brat").permitAll()
                 .and().authorizeRequests().anyRequest().authenticated()
                 .and()
                 .addFilterBefore(loginMethodConfig.tokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)

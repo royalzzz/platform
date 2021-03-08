@@ -39,10 +39,13 @@ import static xin.qust.platform.utils.ToolKit.mapToJsonString;
 public class StanfordExampleApi {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
-    StanfordCoreNLP pipeline = new StanfordCoreNLP("StanfordCoreNLP-chinese.properties");
+    StanfordCoreNLP pipeline;
 
     @RequestMapping("example")
     public Message example(String text) {
+        if (pipeline == null) {
+            pipeline = new StanfordCoreNLP("StanfordCoreNLP-chinese.properties");
+        }
         logger.info(text);
         Annotation document = new Annotation(text);
         pipeline.annotate(document);

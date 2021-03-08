@@ -31,6 +31,7 @@ import java.lang.reflect.Array;
 import java.lang.reflect.Type;
 import java.util.*;
 
+import static xin.qust.platform.utils.ToolKit.dateFormatOutput;
 import static xin.qust.platform.utils.ToolKit.mapToJsonString;
 
 @RequestMapping("kbqa/stanford")
@@ -46,14 +47,17 @@ public class StanfordExampleApi {
         Annotation document = new Annotation(text);
         pipeline.annotate(document);
         List<KbqaStanfordResult> kbqaStanfordResults = new ArrayList<>();
-        List<KbqaStanfordWord> tokens = new ArrayList<>();
-        List<KbqaStanfordDependency> basicDependencies = new ArrayList<>();
-        List<String> kbqaStanfordGraphs = new ArrayList<>();
+        List<KbqaStanfordWord> tokens;
+        List<KbqaStanfordDependency> basicDependencies;
+        List<String> kbqaStanfordGraphs;
 
         //获取文本处理结果
         int i = 0;
         List<CoreMap> coreSentences = document.get(CoreAnnotations.SentencesAnnotation.class);
         for (CoreMap coreSentence : coreSentences) {
+            tokens = new ArrayList<>();
+            kbqaStanfordGraphs = new ArrayList<>();
+            basicDependencies = new ArrayList<>();
             for (CoreLabel token : coreSentence.get(CoreAnnotations.TokensAnnotation.class)) {
                 KbqaStanfordWord kbqaStanfordWord = new KbqaStanfordWord();
                 kbqaStanfordWord.setIndex(token.index());
@@ -100,7 +104,8 @@ public class StanfordExampleApi {
             kbqaStanfordResult.setKbqaStanfordGraphs(kbqaStanfordGraphs);
             kbqaStanfordResults.add(kbqaStanfordResult);
         }
-        Map<String, List<KbqaStanfordResult>> resultMap = new HashMap<>();
+        Map<String, Object> resultMap = new HashMap<>();
+        resultMap.put("docDate", dateFormatOutput(new Date(), "yyyy-MM-dd'T'HH:mm:ss"));
         resultMap.put("sentences", kbqaStanfordResults);
         return Message.createSuccessMessage(resultMap);
     }
